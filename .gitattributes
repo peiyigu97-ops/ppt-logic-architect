@@ -1,0 +1,6 @@
+# Normalize text files in the repository to LF.
+* text=auto
+
+# Shell scripts must stay LF even when checked out on Windows (core.autocrlf=true),
+# otherwise bash fails with "\r: command not found".
+*.sh text eol=lf

@@ -1,0 +1,7 @@
+.claude/
+*.local.*
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+ppt-architecture/
