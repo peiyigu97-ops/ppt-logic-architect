@@ -1,10 +1,10 @@
 ---
 name: ppt-logic-architect
-description: Designs the logic of a presentation before any slides are made. Extracts facts and evidence from raw material, builds a central thesis and argument tree, orders sections with explicit progression, specifies every slide (headline, core message, evidence, transitions), and audits the whole deck for logical gaps. Three modes - CREATE (raw material to deck architecture), RESTRUCTURE (rework an existing deck or outline), AUDIT (review only, no rewriting). Includes a design-research and engineering-reasoning module for industrial design, HCI, hardware prototyping, portfolios and thesis defenses. Use when asked for a PPT outline, storyline, slide-by-slide plan, argument structure, or logic review. Does not lay out or render slides itself; after approval it can hand the architecture to the visual-explainer skill for diagrams and HTML decks. 用于 PPT 逻辑架构、大纲、叙事结构、答辩/汇报/作品集梳理、已有 PPT 重构与逻辑审查。
+description: Designs the logic of a presentation before any slides are made. Extracts facts and evidence from raw material, builds a central thesis and argument tree, orders sections with explicit progression, specifies every slide on one visibly numbered logic path (hierarchy label, headline, evidence, transitions), and audits the whole deck for logical gaps. Three modes - CREATE (raw material to deck architecture), RESTRUCTURE (rework an existing deck or outline), AUDIT (review only, no rewriting). Includes a design-research and engineering-reasoning module for industrial design, HCI, hardware prototyping, portfolios and thesis defenses. Use when asked for a PPT outline, storyline, slide-by-slide plan, argument structure, or logic review. Does not lay out or render slides itself; after approval it can hand the architecture to the visual-explainer skill for diagrams and HTML decks. 用于 PPT 逻辑架构、大纲、叙事结构、答辩/汇报/作品集梳理、已有 PPT 重构与逻辑审查。
 license: MIT
 metadata:
   author: ppt-logic-architect contributors
-  version: "0.2.0"
+  version: "0.3.0"
 ---
 
 # PPT Logic Architect
@@ -22,6 +22,7 @@ All paths below are relative to this skill's directory (the folder that contains
 5. **Explicit progression.** State how each section and each slide leads to the next (cause, contrast, evidence-to-implication, problem-to-solution). Never leave the order to chance.
 6. **Human approval.** Important phases end with a gate. You wait for the user.
 7. **No premature generation.** Never move to final deliverables, or hand off to a slide-building tool, without approval.
+8. **One visible path.** The deck is a single continuous chain of reasoning, between sections and between every slide inside them, and the audience must be able to see it: numbered hierarchy labels, a tracker, and a named connector on every slide (see "Signposting standard" below).
 
 Do not apply every framework to every deck. Choose by purpose, audience and content type (see `references/method-selection.md`). Forcing MECE onto overlapping ideas, or SCQA onto a deck whose audience already knows the context, is an error.
 
@@ -46,9 +47,9 @@ Work in phases. Never output the whole architecture in one message.
 |---|---|---|
 | 1 | Intake & Diagnosis | Inventory the material; separate facts, data, claims, assumptions, open questions; fix purpose, audience, core question |
 | 2 | Thesis & Argument Architecture | Central thesis, scope, logic tree, method choice |
-| 3 | Section Architecture | Section order, roles, progression between sections |
-| 4 | Slide-by-Slide Architecture | One complete card per slide |
-| 5 | Logic Audit | Audit the architecture; fix or flag problems |
+| 3 | Section Architecture | Section order and claim titles with level-1 markers, relay between sections, draft signpost outline |
+| 4 | Slide-by-Slide Architecture | One complete card per slide, with hierarchy labels, connectors and the path chain table |
+| 5 | Logic Audit | Audit the logic and the path integrity; fix or flag problems |
 | 6 | Final Architecture Delivery | Write the five deliverable files |
 
 Which phases each mode uses, and the exit criteria for each phase, are in `references/phase-protocol.md`. Read it together with the mode file once you have routed.
@@ -81,11 +82,12 @@ Load only what the current step needs. Do not read everything up front.
 | Phase 1, if the project is design, HCI, hardware, engineering research, a portfolio or a defense | `references/design-research-reasoning.md` |
 | Whenever you classify statements or rate confidence | `references/evidence-based-reasoning.md` |
 | Phase 2: choosing methods | `references/method-selection.md`, then only the framework files it selects: `references/pyramid-principle.md`, `references/scqa-framework.md`, `references/mece-analysis.md` |
+| Phase 3 and Phase 4: labelling sections and slides, connectors, path chain | `references/signposting.md` |
 | Phase 4: writing headlines and cards | `references/assertion-evidence.md` |
-| Phase 5 and AUDIT mode | `references/logic-audit.md` (plus `references/design-research-reasoning.md` for design or engineering content) |
+| Phase 5 and AUDIT mode | `references/logic-audit.md` and `references/signposting.md` (plus `references/design-research-reasoning.md` for design or engineering content) |
 | Phase 6 | the five files in `templates/` |
 | After Phase 6, only if the user asks for diagrams, a visual deck or a PPTX | `references/visual-handoff.md` and `templates/visual-brief.md` |
-| The user asks what good output looks like | `examples/research-presentation.md` or `examples/design-project-presentation.md` |
+| The user asks what good output looks like | `examples/research-presentation.md` or `examples/design-project-presentation.md`; for the numbering in a Chinese deck, `examples/signposting-example-zh.md` |
 
 ## Evidence discipline (applies in every phase)
 
@@ -95,9 +97,26 @@ Load only what the current step needs. Do not read everything up front.
 - Record each gap as `G#` with what would close it, then decide with the user: narrow the claim, mark it as an assumption, collect evidence, or defer it.
 - Trace sources by ID (`S#` for a source, `E#` for an evidence item, `C#` for a claim) so any slide can be traced back to where its support came from.
 
+## Signposting standard (mandatory, Phases 3 to 6)
+
+Every deck architecture carries one fixed hierarchy, shown on the slides, so the audience can follow the thread:
+
+| Level | Chinese deck | Other languages | Labels | Title is |
+|---|---|---|---|---|
+| 1 | 一、二、三、 | I. II. III. | Section | the section claim |
+| 2 | 1 2 3 | 1 2 3 | A slide in the section (restarts per section) | the assertion headline |
+| 3 | 1) 2) 3) | 1) 2) 3) | A point on the slide | a short claim phrase |
+| 4 | a. b. c. | a. b. c. | A detail under a point | a label or value |
+
+Rules: marker and title always together, titles are claims not topics; a series has at least two items; announce the count ("三个依据") and show exactly that many; sibling order has a stated reason; a section holds about 2 to 6 slides, otherwise split it; four levels at most.
+
+Signposts the audience must **see**: a roadmap (the section claims) at the start, a tracker on every slide, a relay line at each section opener (previous answer, then this section's question), one named **connector chip** on every slide (because, therefore, however, for example, in addition, as a result, which raises the question, answers), and a recap at the end. "Next, we look at..." is not a relation.
+
+**Path integrity**: in Phase 4 build the path chain table (every link, in presentation order, with its relation and why the second must follow). In Phase 5 check it: no blank link, no dead end, no orphan, every section boundary joined by a relay, the close returning to the thesis, and the listener test (the signpost outline alone reproduces the argument). Details, vocabulary and severity: `references/signposting.md`.
+
 ## The slide card (Phase 4 standard)
 
-Every slide has all ten fields. Keywords and bare titles are not acceptable output.
+Every slide has all eleven fields. Keywords and bare titles are not acceptable output.
 
 1. **Slide Number**
 2. **Section**
@@ -109,6 +128,7 @@ Every slide has all ten fields. Keywords and bare titles are not acceptable outp
 8. **Transition to Next Slide** - why the next slide must come next
 9. **Suggested Visual Form** - the kind of exhibit (comparison chart, annotated photo, flow...), not a layout
 10. **Evidence Source / Confidence** - `S#`/`E#` and High, Medium, Low, or None
+11. **Hierarchy Label & On-slide Signposts** - the address (for example `三·2`), the tracker text, the connector chip (the named relation from field 7; on a section's first slide the chip is "answers" and the relation to the previous section is shown in the relay line), and the numbered structure of the slide body (`1)`, `a.`) with its announced count
 
 Non-assertion slides (title, agenda, section divider, appendix) still declare their purpose and their relation to neighbours. Full field guidance is in `templates/slide-by-slide.md`.
 
@@ -116,9 +136,9 @@ Non-assertion slides (title, agenda, section divider, appendix) still declare th
 
 Write these from the templates, filled with the approved content, never left as blank templates:
 
-- `master-outline.md` - brief, thesis, sections, progression, decision log
-- `logic-tree.md` - the argument tree with evidence links
-- `slide-by-slide.md` - all slide cards
+- `master-outline.md` - brief, thesis, sections, progression, signpost outline, decision log
+- `logic-tree.md` - the argument tree with evidence links and hierarchy addresses
+- `slide-by-slide.md` - all slide cards and the path chain table
 - `evidence-matrix.md` - sources, evidence, claim-to-evidence map, gaps
 - `logic-audit-report.md` - findings by severity and their resolution
 
@@ -126,7 +146,7 @@ Ask where to write them if there is no obvious location; default to `./ppt-archi
 
 ## Optional visual hand-off (after Phase 6, only on request)
 
-This skill does not draw. If the user, after approving the architecture, wants diagrams, a visual deck or a PPTX, follow `references/visual-handoff.md`: write `templates/visual-brief.md` from the approved cards and pass it to the **visual-explainer** skill if it is installed. If it is not installed, say so and stop at the brief. The brief is the only content the drawing step may use: no new facts, headlines copied verbatim, confidence and gaps kept visible, and the output checked against the brief. Offer this once after Phase 6; never start it unasked, and never before approval. Tell the user that visual-explainer's PPTX export is best-effort and drops figures, and that neither skill edits an existing `.pptx` in place.
+This skill does not draw. If the user, after approving the architecture, wants diagrams, a visual deck or a PPTX, follow `references/visual-handoff.md`: write `templates/visual-brief.md` from the approved cards and pass it to the **visual-explainer** skill if it is installed. If it is not installed, say so and stop at the brief. The brief is the only content the drawing step may use: no new facts, headlines and hierarchy labels copied verbatim, the tracker, connector chips and numbering kept on every slide, confidence and gaps kept visible, and the output checked against the brief. Offer this once after Phase 6; never start it unasked, and never before approval. Tell the user that visual-explainer's PPTX export is best-effort and drops figures, and that neither skill edits an existing `.pptx` in place.
 
 ## Do not
 
@@ -136,4 +156,5 @@ This skill does not draw. If the user, after approving the architecture, wants d
 - Do not rewrite the deck in AUDIT mode. Report findings and suggested fixes only.
 - Do not present a hypothesis or design assumption as a research finding.
 - Do not claim more than the evidence supports. Narrow the claim or flag the gap.
+- Do not deliver a deck architecture without hierarchy labels, connectors and a complete path chain, and do not treat numbering as proof of logic.
 - Do not skip a gate, and do not treat the user's earlier approval of one phase as approval of the next.

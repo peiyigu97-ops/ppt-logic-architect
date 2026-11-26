@@ -34,7 +34,7 @@
 ```
 ID: A-01
 Severity: Critical
-Location: slide(s) <n>  - "<quoted wording>"
+Location: page(s) <n>, label <三·2 | "unlabelled">  - "<quoted wording>"
 Issue type: <argument validity | causal reasoning | transition | redundancy | contradiction | missing link | concept confusion | over-claiming | unclear thesis>
 Specific cause: <what exactly is wrong>
 Potential impact: <what the audience concludes wrongly, or what the presenter cannot defend>
@@ -63,6 +63,23 @@ Suggested fix: <the kind of change, one or two sentences>
 | 8 | Is information repeated without purpose? | | |
 | 9 | Are key questions left unanswered? | | |
 | 10 | Do conclusions go beyond the evidence? | | |
+| 11 | Is the logic path visible (hierarchy labelled, connectors named, section boundaries relayed, no dead ends)? | | |
+
+## 4b. Signposting and path checks
+
+> Mark each Pass / Partial / Fail and cite page numbers **and** the deck's own labels (or "unlabelled"). Do not renumber the deck in AUDIT mode; describe the fix.
+
+| Check | Result | Pages / labels | Finding |
+|---|---|---|---|
+| Sections marked, with claim titles (not topics) | | | |
+| Slides numbered within sections; points `1)` and details `a.` consistent | | | |
+| No lone item, skipped number, or mixed marker style | | | |
+| Announced counts match the items shown | | | |
+| Every slide shows a named connector to the previous one | | | |
+| Every section boundary has a relay (previous answer, next question) | | | |
+| First slide of each section answers the section's question; the close returns to the thesis | | | |
+| No dead end or orphan on the main path | | | |
+| Listener test: markers, titles and connectors alone reproduce the argument | | | |
 
 ## 5. Design and engineering chain checks
 

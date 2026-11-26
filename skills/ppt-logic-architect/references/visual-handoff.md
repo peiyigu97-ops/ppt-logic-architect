@@ -63,6 +63,7 @@ visual-explainer decides the final figure; these are starting suggestions to put
 
 1. **No new facts.** The drawing step adds no numbers, sources, quotes, claims or labels that are not in the brief. A figure that needs a value the brief lacks shows `[value needed]` or a gap chip, never a plausible number.
 2. **Nothing dropped.** Every card appears as a slide, in order. Appendix cards stay in the appendix. A slide may be split for fit; it may not be removed.
+2b. **The path stays visible.** Hierarchy labels (`一、` `1` `1)` `a.`), the tracker, the connector chip, the relay line at each section opener, the roadmap and the closing recap are copied from the brief and drawn on every slide. The drawing step must not renumber, restyle the markers into plain bullets, merge levels, or drop a tracker or chip to make a slide look cleaner. Splitting a slide for fit keeps its address (for example `三·2` continued, `三·2 (续)`) rather than renumbering the section.
 3. **Strength of wording is preserved.** "suggests" does not become "shows". A hypothesis stays labelled as one.
 4. **Confidence and gaps stay visible.** A Low or None claim must not be drawn with the same visual weight as a High one without a visible cue.
 5. **The architecture wins.** If the drawing step wants to change the order or a claim, the change goes back to the user as an architecture edit, not into the deck.
@@ -82,6 +83,7 @@ visual-explainer decides the final figure; these are starting suggestions to put
 5. **Verify the output against the brief**, and report the result:
    - slide count and order match the cards;
    - each headline matches its card;
+   - every slide shows its label, tracker and connector chip, and the numbering is unchanged;
    - extract every number from the generated source and check each appears in the brief (list any that do not);
    - every Low or None claim and every gap is visibly marked;
    - nothing is described as verified that was not.

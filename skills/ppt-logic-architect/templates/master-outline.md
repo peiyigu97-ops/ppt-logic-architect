@@ -47,15 +47,17 @@
 
 ## 5. Sections
 
-| # | Section | Role in the argument | Section claim | Slides | Time |
+> Level-1 marker: `一、二、三、` for a Chinese deck, `I. II. III.` otherwise. The title is the **section claim**, never a topic label (`references/signposting.md`).
+
+| Marker | Section id | Title (section claim) | Role in the argument | Slides (about 2-6) | Time |
 |---|---|---|---|---|---|
-| S1 | <name> | <why it exists> | <one sentence> | <n-m> | <min> |
+| 一、 | S1 | <one-sentence claim> | <why it exists> | <n-m> | <min> |
 
 ## 6. Progression between sections
 
-| From | To | Relation | Why the second must follow the first |
-|---|---|---|---|
-| S1 | S2 | because / therefore / however / which raises the question ... | <one sentence> |
+| From | To | Relation | Why the second must follow the first | Relay line shown to the audience (previous answer, then next question) |
+|---|---|---|---|---|
+| 一 | 二 | because / therefore / however / which raises the question ... | <one sentence> | <"一的结论是...，那么二要回答...">|
 
 **Where the decision or ask lands:** slide <n>
 
@@ -64,6 +66,20 @@
 > The slide headlines read in order as one paragraph. It must tell the story without the slide bodies.
 
 <paragraph>
+
+## 7b. Signpost outline
+
+> The whole logic path on one page: markers, titles and connector chips. Draft it with the sections in Phase 3; complete it with the slides in Phase 4. Listener test: reading only this reproduces the argument.
+
+```
+<一、section claim>                                   [opening]
+   1 <slide headline>                                  [answers]
+   2 <slide headline>                                  [because]
+<二、section claim>                                   [therefore]
+   1 <slide headline>                                  [answers]
+   ...
+<closing recap: the thesis and 一、二、三、 in one view>
+```
 
 ## 8. Cut list and appendix
 

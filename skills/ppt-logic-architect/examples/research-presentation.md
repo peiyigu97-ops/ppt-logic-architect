@@ -175,6 +175,23 @@ Next: Phase 3 - Section Architecture.
 
 **Where the ask lands:** slide 11 (stated in slide 1).
 
+**Level-1 markers and section claims** (Roman numerals, because the deck is in English; a Chinese deck uses 一、二、三、). The internal ids S1-S4 used in the cards map to the markers I-IV in order; the markers are what the audience sees:
+
+| Marker | Section claim (the title shown on the slides) | Slides (pages) |
+|---|---|---|
+| I. | Adaptive sampling is worth a field study, and sampling is the right target | 1-2 |
+| II. | The scheme and the two tests are matched to the two criteria | 3-4 |
+| III. | Energy and rest/walk accuracy pass, running fails, and one cause is a hypothesis | 5-8 |
+| IV. | The evidence supports a scoped field study | 9-11 |
+
+**Relay lines** (shown on the first slide of each section: the previous answer, then this section's question):
+
+- II, relation *which raises the question*: "I showed that sampling is the right target. II asks: what was built, and how was it tested?"
+- III, relation *therefore*: "II fixed the criteria and the tests. III asks: what did the tests show?"
+- IV, relation *so what*: "III gave the results. IV asks: what do they mean for the decision?"
+
+**Roadmap:** I Decision and rationale > II What was built and tested > III What the tests showed > IV What it means and what we ask. Because the deck has 11 main slides, section openers are the first content slide of each section, not separate divider slides (`references/signposting.md`).
+
 ---
 
 ## Phase 4 - Slide-by-Slide Architecture
@@ -182,6 +199,52 @@ Next: Phase 3 - Section Architecture.
 ### Headline chain
 
 > Adaptive sampling is ready for a field study at rest and walking, but not yet at running. Sampling takes 62% of the fixed-rate monitor's power, so it is the right place to save energy. The adaptive scheme picks 25, 50, or 100 Hz from motion. Two tests answer two questions: bench power for energy, an eight-person pilot for accuracy. Adaptive sampling cut average power by 34% on a scripted bench trace. At rest and walking it stayed within the 3 bpm criterion. At running it misses the criterion. The running error may come from slow rate switching, which is untested. Against both criteria, the results support rest and walking, not running. The evidence rests on eight young participants, one wrist position, and one bench run per condition. We ask approval for a 20-participant field study at rest and walking, with a running fix in parallel.
+
+### Signpost outline
+
+> Markers, titles and connector chips only. Listener test: reading just this reproduces the argument.
+
+```text
+I. Adaptive sampling is worth a field study, and sampling is the right target
+   1 Adaptive sampling is ready for a field study at rest and walking, but not yet at running   [opens]
+   2 Sampling takes 62% of the fixed-rate monitor's average power, so it is the right place to save energy   [because]
+II. The scheme and the two tests are matched to the two criteria
+   1 The adaptive scheme picks 25, 50, or 100 Hz from motion level, using accelerometer-magnitude thresholds   [answers]
+   2 Two tests answer two separate questions: bench power for energy, an eight-person pilot for accuracy   [therefore]
+III. Energy and rest/walk accuracy pass, running fails, and one cause is a hypothesis
+   1 Adaptive sampling cut average power by 34% (9.8 to 6.5 mW) on a scripted bench trace, above the 25% criterion   [answers]
+   2 At rest and walking, adaptive sampling stayed within the 3 bpm criterion (MAE 1.3 and 2.3 bpm, n = 8)   [which raises the question]
+   3 At running intensity, adaptive sampling misses the criterion (MAE 4.6 bpm vs 3.4 for fixed-rate)   [however]
+   4 The running error may come from slow rate switching: in 5 of 8 run trials the rate stayed at 50 Hz for 6-10 s after run onset (hypothesis, untested)   [because]
+IV. The evidence supports a scoped field study
+   1 Against the two criteria, the results support rest and walking, not running   [answers]
+   2 The evidence comes from eight young participants, one wrist position, and one bench run per condition   [however]
+   3 We ask approval for a 20-participant field study at rest and walking, with a running-mode fix developed in parallel   [therefore]
+```
+
+### Path chain table
+
+> Every link in presentation order. The relation is the connector chip; at a section boundary it is the relation recorded in the relay line. "Why the second must follow" is the previous card's field 8.
+
+| From (address, page) | To (address, page) | Relation | Why the second must follow | What the audience sees |
+|---|---|---|---|---|
+| Roadmap (slide 1) | I·1 (p.1) | opens | The deck states its answer and its four sections first | Roadmap with the section claims |
+| I·1 (p.1) | I·2 (p.2) | because | A field study is worth approving only if the intervention targets something that matters, so slide 2 shows why sampling is the target. | Chip "because", tracker on I |
+| I·2 (p.2) | II·1 (p.3) | which raises the question | Having named the target, the audience needs to know what was done to it: slide 3 shows the scheme. | Relay line, chip "answers", tracker moves to II |
+| II·1 (p.3) | II·2 (p.4) | therefore | A mechanism proves nothing until it is tested against criteria, so slide 4 sets out the tests. | Chip "therefore", tracker on II |
+| II·2 (p.4) | III·1 (p.5) | therefore | With the yardsticks fixed, the first result is energy (slide 5). | Relay line, chip "answers", tracker moves to III |
+| III·1 (p.5) | III·2 (p.6) | which raises the question | Energy saved is worthless if the heart rate is wrong, so slide 6 asks whether accuracy held. | Chip "which raises the question", tracker on III |
+| III·2 (p.6) | III·3 (p.7) | however | Running is the third condition and behaves differently (slide 7). | Chip "however", tracker on III |
+| III·3 (p.7) | III·4 (p.8) | because | A failure needs a candidate explanation before a fix can be proposed (slide 8). | Chip "because", tracker on III |
+| III·4 (p.8) | IV·1 (p.9) | so what | Slides 5-8 hold three results and one open cause; slide 9 sets them against the criteria. | Relay line, chip "answers", tracker moves to IV |
+| IV·1 (p.9) | IV·2 (p.10) | however | Before asking for approval we must say how far this evidence reaches (slide 10). | Chip "however", tracker on IV |
+| IV·2 (p.10) | IV·3 (p.11) | therefore | These limits are exactly what a field study can settle, so slide 11 proposes one. | Chip "therefore", tracker on IV |
+| Appendix A·1 | I·2 (p.2) | backs | Supports the literature claim behind the choice of target | Appendix label and a pointer back to the main slide |
+| Appendix A·2 | II·2, III·1 (pp.4-5) | backs | Answers "what exactly was the trace?" | Appendix label and a pointer back to the main slide |
+| Appendix A·3 | III·2, III·3 (pp.6-7) | backs | Answers "what is the spread?" once G4 is closed | Appendix label and a pointer back to the main slide |
+
+**Path check:** 10 links between main slides, plus 3 appendix links; no blank link, no dead end, no orphan; each section boundary has a relay; slide 9 (IV·1) is the closing recap of all three criteria and slide 11 returns to the thesis with the ask.
+
 
 ### Cards
 
@@ -197,6 +260,14 @@ Next: Phase 3 - Section Architecture.
 **8. Transition to Next Slide:** A field study is worth approving only if the intervention targets something that matters, so slide 2 shows why sampling is the target.
 **9. Suggested Visual Form:** Thesis statement with a three-row status strip (energy: met; accuracy at rest/walking: met; accuracy at running: not met).
 **10. Evidence Source / Confidence:** E2-E5, E7 | Medium (inherits the weakest supporting claim; G1-G5)
+**11. Hierarchy Label & On-slide Signposts:** `I·1` (page 1) | tracker `[I] · II · III · IV` | chip: **opens**
+```text
+Roadmap: I Decision and rationale > II What was built and tested > III What the tests showed > IV What it means and what we ask
+(three checks against the criteria)
+1) Energy: met on the bench trace (34% against the 25% criterion; E2, E7)
+2) Accuracy at rest and walking: met (1.3 and 2.3 bpm against 3 bpm; E3, E4)
+3) Accuracy at running: not met (4.6 bpm against 3 bpm; E5)
+```
 
 ### Slide 2 | Section: S1
 
@@ -210,6 +281,14 @@ Next: Phase 3 - Section Architecture.
 **8. Transition to Next Slide:** Having named the target, the audience needs to know what was done to it: slide 3 shows the scheme.
 **9. Suggested Visual Form:** Stacked bar of power by subsystem with the total labelled.
 **10. Evidence Source / Confidence:** S1, E1 | Medium (one device, one run)
+**11. Hierarchy Label & On-slide Signposts:** `I·2` (page 2) | tracker `[I] · II · III · IV` | chip: **because**
+```text
+(three consumers of power at fixed 100 Hz)
+1) Sampling: 62% of 9.8 mW average power
+2) MCU: 24%
+3) BLE: 14%
+Source: E1, one device, one run
+```
 
 ### Slide 3 | Section: S2 What was built and how it was tested
 
@@ -223,6 +302,15 @@ Next: Phase 3 - Section Architecture.
 **8. Transition to Next Slide:** A mechanism proves nothing until it is tested against criteria, so slide 4 sets out the tests.
 **9. Suggested Visual Form:** Flow diagram: accelerometer, motion level, rate selector, PPG sampler.
 **10. Evidence Source / Confidence:** S3, E9 | High (a description of the team's own design)
+**11. Hierarchy Label & On-slide Signposts:** `II·1` (page 3) | tracker `I · [II] · III · IV` | chip: **answers**
+```text
+Relay line: I showed that sampling is the right target. II asks: what was built, and how was it tested?
+(three sampling rates)
+1) 25 Hz
+2) 50 Hz
+3) 100 Hz
+Selection rule: accelerometer-magnitude thresholds; values [value needed from S3] (E9)
+```
 
 ### Slide 4 | Section: S2
 
@@ -236,6 +324,16 @@ Next: Phase 3 - Section Architecture.
 **8. Transition to Next Slide:** With the yardsticks fixed, the first result is energy (slide 5).
 **9. Suggested Visual Form:** Two-column table: question / test / criterion / known limits.
 **10. Evidence Source / Confidence:** E7, E10, S1 | High (descriptions and quoted criteria)
+**11. Hierarchy Label & On-slide Signposts:** `II·2` (page 4) | tracker `I · [II] · III · IV` | chip: **therefore**
+```text
+(two tests, two questions)
+1) Energy question: bench test
+   a. 60-minute scripted trace, one run per condition
+   b. Criterion: power reduction of at least 25%
+2) Accuracy question: eight-person pilot
+   a. Chest-strap reference
+   b. Criterion: MAE of 3 bpm or less
+```
 
 ### Slide 5 | Section: S3 What the tests showed
 
@@ -249,6 +347,16 @@ Next: Phase 3 - Section Architecture.
 **8. Transition to Next Slide:** Energy saved is worthless if the heart rate is wrong, so slide 6 asks whether accuracy held.
 **9. Suggested Visual Form:** Paired bars (fixed vs adaptive) with the 25% line; trace composition labelled under the chart.
 **10. Evidence Source / Confidence:** S1, E2, E7 | Medium (single run; mix assumed; G1-G3)
+**11. Hierarchy Label & On-slide Signposts:** `III·1` (page 5) | tracker `I · II · [III] · IV` | chip: **answers**
+```text
+Relay line: II fixed the criteria and the tests. III asks: what did the tests show?
+(two parts: the result and its limits)
+1) Result: 9.8 to 6.5 mW (33.7%) against the 25% criterion
+2) Limits on the result
+   a. Trace mix of 70/20/10 has no source (G1)
+   b. One run per condition (G2)
+   c. Saving for a rest-and-walk-only trace not measured (G3)
+```
 
 ### Slide 6 | Section: S3
 
@@ -262,6 +370,13 @@ Next: Phase 3 - Section Architecture.
 **8. Transition to Next Slide:** Running is the third condition and behaves differently (slide 7).
 **9. Suggested Visual Form:** Grouped bars by condition with the 3 bpm line, with per-participant dots to show spread.
 **10. Evidence Source / Confidence:** S2, E3, E4, E7, E10 | Medium (n=8, young, one wrist; G4, G5)
+**11. Hierarchy Label & On-slide Signposts:** `III·2` (page 6) | tracker `I · II · [III] · IV` | chip: **which raises the question**
+```text
+(two conditions)
+1) Rest: MAE 1.3 bpm (fixed rate 1.2)
+2) Walking at 4 km/h: MAE 2.3 bpm (fixed rate 2.1)
+Both within the 3 bpm criterion; SD and spread to be added (G4)
+```
 
 ### Slide 7 | Section: S3
 
@@ -275,6 +390,14 @@ Next: Phase 3 - Section Architecture.
 **8. Transition to Next Slide:** A failure needs a candidate explanation before a fix can be proposed (slide 8).
 **9. Suggested Visual Form:** The slide-6 chart extended with the running condition, with the gap to the criterion highlighted.
 **10. Evidence Source / Confidence:** S2, E5, E7 | Medium (n=8; G4, G5)
+**11. Hierarchy Label & On-slide Signposts:** `III·3` (page 7) | tracker `I · II · [III] · IV` | chip: **however**
+```text
+(two numbers against one criterion)
+1) Adaptive: MAE 4.6 bpm, above the 3 bpm criterion
+2) Fixed-rate baseline: MAE 3.4 bpm, also above it
+   a. About 1.2 bpm is added by the adaptive scheme
+   b. The remaining error is already present in the baseline
+```
 
 ### Slide 8 | Section: S3
 
@@ -288,6 +411,14 @@ Next: Phase 3 - Section Architecture.
 **8. Transition to Next Slide:** Slides 5-8 hold three results and one open cause; slide 9 sets them against the criteria.
 **9. Suggested Visual Form:** Timeline for one trial: motion level and selected rate over time, with the lag marked.
 **10. Evidence Source / Confidence:** S3, E6 | Low (inference; untested; G6)
+**11. Hierarchy Label & On-slide Signposts:** `III·4` (page 8) | tracker `I · II · [III] · IV` | chip: **because**
+```text
+(one observation, one inference)
+1) Observation (data): in 5 of 8 run trials the rate stayed at 50 Hz for 6-10 s after run onset (E6)
+2) Inference (hypothesis, untested): slow switching raises the error in the first seconds of running
+   a. It cannot explain the baseline's own 3.4 bpm error
+   b. Replaying the run data with a faster switch would test it (G6)
+```
 
 ### Slide 9 | Section: S4 What it means and what we ask
 
@@ -301,6 +432,15 @@ Next: Phase 3 - Section Architecture.
 **8. Transition to Next Slide:** Before asking for approval we must say how far this evidence reaches (slide 10).
 **9. Suggested Visual Form:** Criteria matrix (rows: criteria and conditions; columns: result, status, confidence).
 **10. Evidence Source / Confidence:** E2-E7 | Medium
+**11. Hierarchy Label & On-slide Signposts:** `IV·1` (page 9) | tracker `I · II · III · [IV]` | chip: **answers**
+```text
+Relay line: III gave the results. IV asks: what do they mean for the decision?
+(three rows of the decision rule)
+1) Energy, 25% or more: met on the scripted trace (34%; Medium)
+2) Accuracy of 3 bpm or less at rest and walking: met (Medium)
+3) Accuracy of 3 bpm or less at running: not met (Medium)
+Note: the 34% includes the running segment (G3)
+```
 
 ### Slide 10 | Section: S4
 
@@ -314,6 +454,14 @@ Next: Phase 3 - Section Architecture.
 **8. Transition to Next Slide:** These limits are exactly what a field study can settle, so slide 11 proposes one.
 **9. Suggested Visual Form:** Table: limit / what it affects / how the next step addresses it.
 **10. Evidence Source / Confidence:** E10, S1, gap register | High (an honest description of the team's own limits)
+**11. Hierarchy Label & On-slide Signposts:** `IV·2` (page 10) | tracker `I · II · III · [IV]` | chip: **however**
+```text
+(three limits)
+1) Pilot sample: 8 participants aged 22-31, one wrist; skin tone not recorded (G5)
+2) Bench test: one run per condition; activity mix unsourced (G1, G2)
+3) Cause of the running error: untested (G6)
+Each limit maps to a field-study activity
+```
 
 ### Slide 11 | Section: S4
 
@@ -327,14 +475,22 @@ Next: Phase 3 - Section Architecture.
 **8. Transition to Next Slide:** Closing slide; backup slides follow.
 **9. Suggested Visual Form:** Plan timeline with the gaps (G1-G6) each activity closes.
 **10. Evidence Source / Confidence:** Slides 9-10, gap register | Medium for the logic; **None** for the sample size until G8 is answered
+**11. Hierarchy Label & On-slide Signposts:** `IV·3` (page 11) | tracker `I · II · III · [IV]` | chip: **therefore**
+```text
+(two requests)
+1) Approve a 20-participant field study at rest and walking
+   a. Sample-size rationale: [rationale needed] (G8)
+   b. Each activity closes a named gap (G1-G6)
+2) Develop the running-mode fix in parallel
+```
 
 ### Appendix
 
-**A1 - Related-work notes (backs slide 2).** *Reason:* shows the literature claim that sampling dominates cost. *Relationship:* supports slide 2. *Source/Confidence:* S5, E8 | **Low**: citations not supplied (G7). *Visual:* two-row table of papers. *Transition:* return to slide 2. *Headline:* "Two papers report that fixed-rate sampling dominates wearable HR energy cost (citations pending)".
+**A1 - Related-work notes (backs slide 2).** *Reason:* shows the literature claim that sampling dominates cost. *Relationship:* supports slide 2. *Source/Confidence:* S5, E8 | **Low**: citations not supplied (G7). *Visual:* two-row table of papers. *Transition:* return to slide 2. *Headline:* "Two papers report that fixed-rate sampling dominates wearable HR energy cost (citations pending)". *Hierarchy:* Appendix A·1; backs I·2 (page 2).
 
-**A2 - Bench setup and trace composition (backs slides 4-5).** *Reason:* answers "what exactly was the trace?" *Relationship:* detail for slide 5. *Source/Confidence:* S1 | High as a description. *Visual:* trace timeline with segments. *Headline:* "The scripted trace runs 42 min rest, 12 min walk, 6 min run".
+**A2 - Bench setup and trace composition (backs slides 4-5).** *Reason:* answers "what exactly was the trace?" *Relationship:* detail for slide 5. *Source/Confidence:* S1 | High as a description. *Visual:* trace timeline with segments. *Headline:* "The scripted trace runs 42 min rest, 12 min walk, 6 min run". *Hierarchy:* Appendix A·2; backs II·2 and III·1 (pages 4-5).
 
-**A3 - Pilot protocol and per-participant results (backs slides 6-7).** *Reason:* answers "what is the spread?" and closes G4 once SD is computed. *Relationship:* detail for slides 6-7. *Source/Confidence:* S2, E10 | High as a description. *Visual:* dot plot per participant per condition. *Headline:* "Per-participant error at running ranges widely" `[range to be computed from S2 before stating]`.
+**A3 - Pilot protocol and per-participant results (backs slides 6-7).** *Reason:* answers "what is the spread?" and closes G4 once SD is computed. *Relationship:* detail for slides 6-7. *Source/Confidence:* S2, E10 | High as a description. *Visual:* dot plot per participant per condition. *Headline:* "Per-participant error at running ranges widely" `[range to be computed from S2 before stating]`. *Hierarchy:* Appendix A·3; backs III·2 and III·3 (pages 6-7).
 
 ---
 
@@ -350,6 +506,9 @@ The audit ran on the first Phase 4 draft. It found these issues, which were fixe
 | A-04 | Major | Draft slide 2 | Headline rested on a literature claim with no citations | Evidence changed to E1 (own data); literature moved to A1 |
 | A-05 | Major | Slides 5, 9 | The 34% includes the running segment, where accuracy fails, while the thesis is scoped to rest and walking | **Open.** Stated on slides 5 and 9; closing it needs G3 (a quick bench run) |
 | A-06 | Minor | Draft slides 7 and 9 | Running result stated twice with no new purpose | Slide 9 now consolidates; slide 7 keeps the detail |
+| A-07 | Minor | Draft section titles and connectors | Sections were titled by topic ("Background", "Method", "Results", "Next steps"), and slide 3 followed slide 2 with no named relation | Titles rewritten as claims (I to IV); relay lines added at each opener; every slide has a connector chip; path chain table built |
+
+**Path integrity (signposting pass):** 10 links between main slides plus 3 appendix links, no blank link, no dead end, no orphan. Listener test passed: the signpost outline alone reproduces the argument. One link is carried by the relay line rather than a slide chip (III to IV, "so what").
 
 **Audience questions:** baseline? (slides 6-7, answered); sample? (slide 10, answered); what is the spread? (A3, pending G4); is the lag the cause? (slide 8, stated as untested); why n=20? (**unanswered**, G8).
 

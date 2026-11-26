@@ -26,15 +26,18 @@ CARD_FIELDS = [
     "Supporting Evidence", "Reason for Inclusion",
     "Logical Relationship with Previous Slide", "Transition to Next Slide",
     "Suggested Visual Form", "Evidence Source / Confidence",
+    "Hierarchy Label & On-slide Signposts",
 ]
 TEMPLATES = ["master-outline.md", "logic-tree.md", "slide-by-slide.md",
              "evidence-matrix.md", "logic-audit-report.md", "visual-brief.md"]
 EXAMPLES = ["research-presentation.md", "design-project-presentation.md"]
+ZH_EXAMPLE = "signposting-example-zh.md"
 REFERENCES = [
     "phase-protocol.md", "mode-create.md", "mode-restructure.md", "mode-audit.md",
     "method-selection.md", "pyramid-principle.md", "scqa-framework.md",
     "assertion-evidence.md", "mece-analysis.md", "evidence-based-reasoning.md",
     "logic-audit.md", "design-research-reasoning.md", "visual-handoff.md",
+    "signposting.md",
 ]
 
 failures = []
@@ -91,7 +94,7 @@ def main():
         check((SKILL_DIR / "references" / f).is_file(), f"references/{f}")
     for f in TEMPLATES:
         check((SKILL_DIR / "templates" / f).is_file(), f"templates/{f}")
-    for f in EXAMPLES:
+    for f in EXAMPLES + [ZH_EXAMPLE]:
         check((SKILL_DIR / "examples" / f).is_file(), f"examples/{f}")
     if not skill_md.is_file():
         return
@@ -161,6 +164,28 @@ def main():
                   f"{ex} uses only High/Medium/Low/None confidence labels")
             cards = len(re.findall(r"\*\*10\. Evidence Source / Confidence:\*\*", t))
             check(cards >= 10, f"{ex} has complete cards (found {cards})")
+            labelled = len(re.findall(r"\*\*11\. Hierarchy Label & On-slide Signposts:\*\*", t))
+            check(labelled == cards, f"{ex}: every card has a hierarchy label (field 11): {labelled} of {cards}")
+            check("### Signpost outline" in t and "### Path chain table" in t,
+                  f"{ex} has a signpost outline and a path chain table")
+            # numbering hygiene inside the fenced body structures: no lone 1) and no lone a.
+            for block in re.findall(r"```text\n(.*?)```", t, re.S):
+                has1 = re.search(r"(?m)^1\)", block)
+                has2 = re.search(r"(?m)^2\)", block)
+                n_a = len(re.findall(r"(?m)^\s+a\. ", block))
+                n_b = len(re.findall(r"(?m)^\s+b\. ", block))
+                if (has1 and not has2) or n_a > n_b:
+                    check(False, f"{ex}: lone '1)' or 'a.' in a body structure", block.split("\n")[0])
+                    break
+            else:
+                check(True, f"{ex}: no lone 1) or a. in body structures")
+    zh = SKILL_DIR / "examples" / ZH_EXAMPLE
+    if zh.is_file():
+        t = zh.read_text(encoding="utf-8")
+        check("fictional" in t.lower() and "虚构" in t, f"{ZH_EXAMPLE} states its data is fictional")
+        check(all(m in t for m in ("一、", "二、", "三、", "四、")), f"{ZH_EXAMPLE} uses 一、二、三、四、")
+        check(all(m in t for m in ("1)", "2)", "a.", "b.")), f"{ZH_EXAMPLE} uses 1) 2) and a. b.")
+        check("路径链表" in t and "路标大纲" in t, f"{ZH_EXAMPLE} has the path chain table and signpost outline")
     for f in files:
         t = f.read_text(encoding="utf-8")
         check(not re.search(r"\bTODO\b|\bFIXME\b|lorem ipsum", t, re.I),

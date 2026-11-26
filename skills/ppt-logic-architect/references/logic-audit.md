@@ -13,6 +13,7 @@ Run these in order. Each pass looks at a different level, so a problem hidden in
 | **3. Cross-slide** | Pairs and clusters | Redundancy? Contradiction? Terms used consistently? |
 | **4. Whole argument** | Thesis, tree, sections | Does the thesis answer the central question? Do the sections together support it? |
 | **5. Audience** | The stated audience | What would they ask that the deck does not answer? |
+| **6. Signposting and path** | Hierarchy labels, connectors, section boundaries | Can the audience *see* one continuous path? Rules, checks and severity: `references/signposting.md` |
 
 ## 2. Argument validity
 
@@ -59,6 +60,19 @@ For each adjacent pair of slides and sections, name the relation:
 A transition is **missing** when you cannot name the relation, or when the second slide would make sense in any order. A transition is **wrong** when the stated relation does not hold (a "therefore" that does not follow).
 
 Also check the **agenda versus content**: every promised section is delivered, and nothing important appears unannounced.
+
+### Visible path (signposting pass)
+
+Transitions can be sound and still invisible. Check what the audience actually sees:
+
+- **Hierarchy**: sections marked and titled with claims; slides numbered within sections; points and details numbered; marker and title together; no lone item, no skipped number, no mixed styles.
+- **Connectors**: each slide shows a named relation to the previous one; "next, we look at..." does not count.
+- **Boundaries**: each section boundary carries a relay (previous answer, next question); the first slide of a section answers the section's question; the close returns to the thesis.
+- **Dead ends and orphans** on the main path.
+- **Numbers that lie**: a numbered sequence over items with no real order, or a count that does not match ("three reasons" over two).
+- **Listener test**: do the markers, titles and connectors alone reproduce the argument?
+
+Report each failure with the page number **and** the deck's own label (or "unlabelled"). Severity table: `references/signposting.md`.
 
 ## 5. Redundancy
 
@@ -117,7 +131,7 @@ When in doubt between two levels, apply this test: **if the audience acts on thi
 ```
 ID: A-01
 Severity: Critical | Major | Minor
-Location: slide(s) - quote the wording where it matters
+Location: page(s) and the deck's own label (or "unlabelled") - quote the wording where it matters
 Issue type: <from the sections above>
 Specific cause: <what exactly is wrong>
 Potential impact: <what the audience concludes wrongly, or what the presenter cannot defend>

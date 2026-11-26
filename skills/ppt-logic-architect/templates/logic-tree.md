@@ -53,6 +53,8 @@ C0  <thesis>                                         [Confidence: High|Medium|Lo
 
 ## Mapping to sections
 
-| Branch | Section | Slides |
-|---|---|---|
-| C1 | S1 | 3-6 |
+> A branch maps to a level-1 section (marker `一、`), its sub-claims to level-2 slides (address `一·2`), and its evidence to level-3 points (`1)`) and level-4 details (`a.`). Use the same labels as the slide cards (`references/signposting.md`).
+
+| Branch | Section (marker) | Slide addresses (pages) | Points on the slides |
+|---|---|---|---|
+| C1 | 一、S1 | 一·1 to 一·4 (p.3-6) | 一·2: 1) E1, 2) E2 |

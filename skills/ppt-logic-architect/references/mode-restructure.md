@@ -41,8 +41,8 @@ New thesis (keep the author's if it is sound; sharpen it if it is vague; narrow 
 ### 6. Map old to new (Phase 3-4)
 **Every original slide appears in the mapping table.** No exceptions.
 
-| Old # | Old title | Disposition | New # | Reason |
-|---|---|---|---|---|
+| Old # | Old title | Disposition | New # | New address | Reason |
+|---|---|---|---|---|---|
 
 Dispositions:
 
@@ -59,7 +59,7 @@ Dispositions:
 When unsure, use APPENDIX, not REMOVE.
 
 ### 7. Write the new slide cards (Phase 4)
-Full ten-field cards for the new structure. For each card, say which old slide(s) it comes from. For slides that need evidence the original does not have, write the card with the requirement and a `G#`, not with invented evidence.
+Full eleven-field cards for the new structure, with hierarchy labels and connectors (`references/signposting.md`). The new address is the logic position (for example `三·2`); the old numbering, if the deck had any, is recorded as found in the mapping and is never silently discarded. For each card, say which old slide(s) it comes from. For slides that need evidence the original does not have, write the card with the requirement and a `G#`, not with invented evidence.
 
 ### 8. Audit and deliver (Phase 5-6)
 Audit the new structure with `references/logic-audit.md`. Deliver the five files; `slide-by-slide.md` includes the mapping table.

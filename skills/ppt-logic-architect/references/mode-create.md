@@ -59,8 +59,10 @@ Ordering is a choice with a reason, not a default. Each section gets a role in t
 ### 7. Build the progression (Phase 3)
 Between every pair of adjacent sections, name the relation: *because*, *therefore*, *however*, *for example*, *which raises the question*, *so we then need to...*. If you cannot name it, the order is arbitrary or a section is missing.
 
+Then make it visible (`references/signposting.md`): give each section its level-1 marker (一、二、三、 for a Chinese deck, I. II. III. otherwise) and a **claim title**, write the **relay line** for every boundary (the previous answer, then the next question), and draft the signpost outline.
+
 ### 8. Generate the slide cards (Phase 4)
-One complete card per slide (ten fields). Allocate slides from the budget: a rough rule is one to three minutes per content slide depending on density, but treat it as a heuristic, not a requirement. Put supporting detail the audience may ask for in the appendix.
+One complete card per slide (eleven fields), with the hierarchy address, tracker, connector chip and a numbered body (`1)`, `a.`) that announces its count. Build the path chain table as you go. Allocate slides from the budget: a rough rule is one to three minutes per content slide depending on density, but treat it as a heuristic, not a requirement. Keep each section to about 2 to 6 slides. Put supporting detail the audience may ask for in the appendix.
 
 ### 9. Audit (Phase 5)
 Run `references/logic-audit.md`. Fix Critical issues in the phase that caused them.

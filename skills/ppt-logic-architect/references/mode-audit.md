@@ -26,7 +26,7 @@ If no thesis can be identified, record it as a Critical finding (core argument u
 Show the reconstruction at the Phase 2 gate. If the user corrects it, the audit changes with it.
 
 ### 3. Audit (Phase 5)
-Use `references/logic-audit.md` for the passes and the issue taxonomy. Cover all ten audit questions:
+Use `references/logic-audit.md` for the passes and the issue taxonomy. Cover all eleven audit questions (the first ten are the logic questions; the eleventh checks that the logic is visible to the audience):
 
 1. Is the core thesis clear?
 2. Do the supporting arguments support it?
@@ -38,6 +38,7 @@ Use `references/logic-audit.md` for the passes and the issue taxonomy. Cover all
 8. Is information repeated without purpose?
 9. Are key questions left unanswered?
 10. Do conclusions go beyond the evidence?
+11. Is the logic path **visible**: hierarchy labelled, connectors named, section boundaries relayed, no dead ends? (`references/signposting.md`)
 
 For design and engineering decks, also run the research-to-solution checks in `references/design-research-reasoning.md`.
 

@@ -9,7 +9,8 @@ Thanks for helping improve `ppt-logic-architect`. This project is a skill, so th
 3. **Use only portable frontmatter fields** in `SKILL.md`: `name`, `description`, `license`, `metadata`, `allowed-tools`. These are defined by the Agent Skills specification and accepted by Codex's own validator. The spec also defines `compatibility`, but Codex's validator rejects it, so it is not used here. Tool-specific extensions do not belong in the shared file; Codex UI settings go in an optional `agents/openai.yaml`, never in `SKILL.md`.
 4. **Relative links must resolve.** Every path in `SKILL.md` and `references/` is relative to the skill folder.
 5. **Never put fabricated data in non-example files.** Examples must say they are fictional.
-6. **Keep the principles.** Logic before layout, evidence before conclusion, human approval, no premature generation. A change that weakens a principle needs a strong argument.
+6. **Keep the principles.** Logic before layout, evidence before conclusion, human approval, no premature generation, one visible path. A change that weakens a principle needs a strong argument.
+7. **Keep the signposting standard intact.** The hierarchy (一、→ 1 → 1) → a.), claim titles, connectors and relay lines are defined once, in `references/signposting.md`. If you change a level, a marker or the connector vocabulary, change it there and in `SKILL.md`, `templates/slide-by-slide.md`, both worked examples and TC10 together.
 
 ## Adding or changing a methodology
 

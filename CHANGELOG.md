@@ -4,6 +4,22 @@ All notable changes to this project are recorded here. The format follows [Keep 
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-11-26
+
+### Added
+- **Signposting standard**: a fixed four-level hierarchy on every deck (一、→ 1 → 1) → a. for a Chinese deck; I. → 1 → 1) → a. otherwise), with claim titles, an address for every slide (for example `三·2`), a tracker, a named connector chip, a relay line at every section boundary, a roadmap and a closing recap. New `references/signposting.md` and the Chinese worked example `examples/signposting-example-zh.md`.
+- **Path integrity**: a path chain table (every link, in presentation order, with its relation) built in Phase 4 and checked in Phase 5, plus a listener test. Signposting findings get severity levels.
+- Slide card field 11, "Hierarchy Label & On-slide Signposts"; a signpost outline in `master-outline.md`; a path chain table and a "new address" column in the RESTRUCTURE mapping.
+- AUDIT question 11 ("Is the logic path visible?") and a signposting checklist in `logic-audit-report.md`.
+- Test case TC10 and behavior B20; `scripts/validate.py` now checks that every example card has field 11, that each example has a signpost outline and a path chain table, and that no body structure has a lone `1)` or `a.`.
+
+### Changed
+- Slide cards now have eleven fields (was ten). Both worked examples were extended with hierarchy labels, relay lines, a signpost outline and a path chain table.
+- The visual hand-off must keep labels, trackers and connector chips unchanged and may not restyle them into plain bullets.
+
+### Note
+- Numbering makes the structure visible; it does not make the logic sound. The audit still checks the logic. The behavior of the new rules has not yet been run on a live agent.
+
 ## [0.2.0] - 2026-11-26
 
 ### Added

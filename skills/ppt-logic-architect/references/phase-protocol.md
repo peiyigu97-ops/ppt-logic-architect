@@ -83,27 +83,29 @@ Exit when: every branch has evidence or a recorded gap, and the thesis is no str
 
 ### Phase 3 - Section Architecture
 Produce:
-1. **Sections in order**, each with its role in the argument and a section-level claim.
-2. **Progression table**: for each adjacent pair of sections, the named relation and why the second must follow the first.
-3. **Slide and time budget** per section.
+1. **Sections in order**, each with a level-1 marker (一、二、三、 for a Chinese deck, I. II. III. otherwise), its role in the argument, and a **claim title**, not a topic label (`references/signposting.md`).
+2. **Progression table**: for each adjacent pair of sections, the named relation, why the second must follow the first, and the **relay line** the audience will see (the previous answer, then the next question).
+3. **Slide and time budget** per section (about 2 to 6 slides each; split a section beyond that).
 4. **Narrative frame** if one was chosen (for example SCQA at deck level or section level).
 5. **Where the ask or decision lands.**
+6. **Draft signpost outline**: markers and claim titles for the sections, with the roadmap that will open the deck.
 
-Exit when: no section lacks a role, and no transition is unnamed.
+Exit when: no section lacks a role, a marker and a claim title, no transition is unnamed, and every section boundary has a relay.
 
 ### Phase 4 - Slide-by-Slide Architecture
 Produce:
-1. **All slide cards** with the ten fields (`templates/slide-by-slide.md`).
+1. **All slide cards** with the eleven fields (`templates/slide-by-slide.md`), including the hierarchy address, tracker text, connector chip and the numbered structure of the slide body (`1)`, `a.`) with its announced count.
 2. **Headline chain**: the headlines read in order, as a paragraph. It must tell the story on its own.
-3. **Cut list**: material left out, and why.
-4. **Appendix list**: backup slides with their purpose.
+3. **Path chain table**: every link in presentation order (title, roadmap, section openers, slides, recaps, close) with its relation and why the second must follow. Complete the **signpost outline** from the Phase 3 draft.
+4. **Cut list**: material left out, and why.
+5. **Appendix list**: backup slides with their purpose and the main slide each one supports.
 
-Exit when: every card is complete, no card lacks a reason for inclusion, and every claim has evidence or a gap.
+Exit when: every card is complete, no card lacks a reason for inclusion, every claim has evidence or a gap, every card has a label and a connector, and the path chain table has no blank link.
 
 Present long decks one section at a time if a single message would be unreadable; the gate still comes once, after the last section, unless the user asks otherwise.
 
 ### Phase 5 - Logic Audit
-Run the passes in `references/logic-audit.md` on the Phase 4 output (or, in AUDIT mode, on the existing deck). Produce the findings with severity, location, cause, impact and fix. Then:
+Run the passes in `references/logic-audit.md`, including the signposting and path-integrity pass, on the Phase 4 output (or, in AUDIT mode, on the existing deck). Produce the findings with severity, location, cause, impact and fix. Then:
 - **Critical** findings: return to the responsible phase and fix there. Do not patch silently in Phase 5.
 - **Major** findings: fix, or ask the user to accept the risk explicitly.
 - **Minor** findings: fix, or list.

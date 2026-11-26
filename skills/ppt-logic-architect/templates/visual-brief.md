@@ -28,6 +28,11 @@ verified. Keep each figure slide's claim as a plain sentence in the body text as
 ## Deck-level
 
 - Headline chain (verbatim, for agenda and dividers): <paragraph from `master-outline.md`>
+- Signpost outline (verbatim): <the nested outline of markers, titles and chips from `master-outline.md`>
+- Roadmap slide: the level-1 markers with their section **claims** and the thesis, at the start
+- Tracker: on every numbered slide, same place, current section highlighted
+- Closing recap: the thesis and every level-1 claim, one per marker, in one view
+- Hierarchy glyphs: level 1 <一、 or I.>, level 2 `1`, level 3 `1)`, level 4 `a.` (copy exactly; do not restyle into bullets)
 - Sections in order: <S1 ... Sn> with the relation between each pair
 - Confidence legend to draw once and reuse: High / Medium / Low / None, and "gap"
 - Slide budget: <n> main + <m> appendix
@@ -39,7 +44,12 @@ verified. Keep each figure slide's claim as a plain sentence in the body text as
 
 ### Slide <N>  |  Section <S#>  |  Card: `slide-by-slide.md` slide <N>
 
+- **Hierarchy label (verbatim):** <address, e.g. 三·2 | III·2>
+- **Tracker to draw:** <all section markers with the current one highlighted, e.g. 一  二  [三]  四>
+- **Connector chip (verbatim):** <because | therefore | however | ... | 因为 | 因此 | 但是 ...>
+- **Relay line (first slide of a section only):** <previous answer, then this section's question>
 - **Headline (verbatim):** <...>
+- **Body structure (verbatim numbering):** <announced count; 1) point; a. detail; 2) point ...>
 - **Claim in one sentence (also as body text):** <...>
 - **Figure to draw:** <type from the card's Suggested Visual Form, with the elements: boxes, arrows with verbs, axes, rows>
 - **Data to show (exact):**
@@ -73,6 +83,8 @@ verified. Keep each figure slide's claim as a plain sentence in the body text as
 |---|---|---|
 | Slide count and order match the cards | Pass / Fail | |
 | Every headline matches its card | Pass / Fail | |
+| Hierarchy labels, trackers, connector chips and numbering are present and unchanged on every slide | Pass / Fail | list any renumbered or dropped |
+| Section openers carry the relay line; the roadmap and closing recap exist | Pass / Fail | |
 | Every number in the output appears in this brief | Pass / Fail | list any that do not |
 | Low and None claims and gaps are visibly marked | Pass / Fail | |
 | Viewed in a browser | Yes / No | If No, say "not viewed" in the report to the user |

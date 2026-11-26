@@ -16,7 +16,7 @@
 
 ## 3. Claim-to-evidence map
 
-| Claim | Slide(s) | Evidence | Status (Sourced / Derived / Assumed / Missing) | Confidence (High / Medium / Low / None) | Scope match? (population / conditions / metric / time / verb) | Notes |
+| Claim | Slide(s): page and address (e.g. p.5, 三·1) | Evidence | Status (Sourced / Derived / Assumed / Missing) | Confidence (High / Medium / Low / None) | Scope match? (population / conditions / metric / time / verb) | Notes |
 |---|---|---|---|---|---|---|
 | C1 | 4 | E1, E2 | Sourced | Medium | Partly: <which dimension does not match> | <...> |
 

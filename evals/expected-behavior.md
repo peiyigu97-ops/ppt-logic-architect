@@ -16,7 +16,7 @@ The behavior contract for `ppt-logic-architect`, the answer key for the seeded f
 | B8 | **Matches claim to evidence scope** | Headlines are narrowed where population, conditions, metric, time, or verb strength outrun the evidence |
 | B9 | **Rates confidence honestly** | Confidence is High, Medium, Low, or None per claim; Low or None where evidence is thin; no hybrid labels |
 | B10 | **Makes progression explicit** | Every transition between adjacent slides and sections names a relation |
-| B11 | **Complete slide cards** | All ten fields; a reason for inclusion that says what breaks without the slide |
+| B11 | **Complete slide cards** | All eleven fields, including the hierarchy label and signposts; a reason for inclusion that says what breaks without the slide |
 | B12 | **Selects frameworks by fit** | A short method decision names what is used and not used, with reasons; no forced SCQA or MECE |
 | B13 | **AUDIT does not rewrite** | Findings with location, cause, impact, fix-direction; no replacement deck |
 | B14 | **RESTRUCTURE preserves content** | Every original slide is in the mapping with a disposition and reason; removal only with a stated reason and user approval |
@@ -25,10 +25,25 @@ The behavior contract for `ppt-logic-architect`, the answer key for the seeded f
 | B17 | **Design chain applied to design and engineering decks** | Material classified by stage; the eight checks run in Phase 5 |
 | B18 | **Replies in the user's language** with canonical English field labels | Field labels such as `Action-oriented Headline` are unchanged |
 | B19 | **Visual hand-off keeps the evidence discipline** | Starts only after approval and an explicit request; says so when visual-explainer is missing; the brief and output add no facts; headlines verbatim; Low/None and gaps visible; output checked against the brief; PPTX and in-place-edit limits stated before, not after |
+| B20 | **One visible logic path** | Sections marked 一、/I. with claim titles; slides numbered within sections; points 1) and details a.; a tracker, a connector chip and a body structure with its announced count on every slide; a relay line at each section boundary; a path chain table with no blank cell; a roadmap and a closing recap; no lone item; no marker style mixed within a level; numbering is never presented as proof of logic |
 
 ## 2. Answer key: seeded flaws
 
 An output "finds" a flaw if it names it with a location (slide or note) and a reason. Partial credit for finding it without the reason.
+
+### TC10
+| Flaw (page, label) | Expected handling |
+|---|---|
+| Sections 一、二、四、五 (no 三) | Skipped number; agenda and labelled sections do not match |
+| Pages 4 and 6: a single `1)` | Lone item; make plain text or add the real second item |
+| Page 9: `a.` with no `1)`, and a single `a.` | Skipped level and lone item |
+| Page 8: "三个依据", two points | Announced count does not match |
+| Section titles 背景 / 方法 / 结果 / 总结 | Topic labels, not claims |
+| No relay at any section boundary; no connector on any slide | Missing relay and connectors; Major for the deck as a whole |
+| Page 11 "接下来看看下一步" | Not a relation; dead end between 10 and 12 |
+| No roadmap, tracker or closing recap | Preview, position and review signposts absent |
+| Page 10 "已具备全国推广条件" | Over-claim (six farms, 18%; page 12 plans 20 farms): at least Major, Critical if the rollout is the decision. Numbering does not make it sound |
+| Pages 1, 2 (title, agenda) | Not defects (false-positive check); the agenda should list claims |
 
 ### TC1
 | Flaw | Expected handling |
@@ -117,7 +132,7 @@ For each case, score every Must and Must not line: Pass = 1, Partial = 0.5, Fail
 | Partial | All `[G]` lines pass and the remaining score is 50-79% |
 | Fail | Any `[G]` line fails, or the remaining score is below 50% |
 
-Skill-level release gate: all nine cases pass on at least one run (TC9 Session C only counts if the companion skill was actually installed and run) and no case fails on a fabrication or gate line in any run.
+Skill-level release gate: all ten cases pass on at least one run (TC9 Session C only counts if the companion skill was actually installed and run) and no case fails on a fabrication or gate line in any run.
 
 ## 5. Common failure patterns to watch for
 

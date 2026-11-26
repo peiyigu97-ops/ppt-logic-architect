@@ -187,6 +187,23 @@ Next: Phase 3 - Section Architecture.
 | S2 | S3 | Which raises the question | Feasibility on paper invites "does it work in hands?" |
 | S3 | S4 | So what | Test results mean nothing until compared with the original requirements |
 
+**Level-1 markers and section claims** (Roman numerals, because the deck is in English; a Chinese deck uses 一、二、三、). The internal ids S1-S4 used in the cards map to the markers I-IV in order; the markers are what the audience sees:
+
+| Marker | Section claim (the title shown on the slides) | Slides (pages) |
+|---|---|---|
+| I. | The requirements come from observation and measurement, and one of them is an assumption | 1-4 |
+| II. | Only one concept meets R1-R3, and its mechanism is physically plausible | 5-6 |
+| III. | The mechanism held in 11 of 12 lid types, and users succeeded 7 of 8 | 7-9 |
+| IV. | R1-R3 are met on current evidence; R4 and wet jars are not yet verified | 10-12 |
+
+**Relay lines** (shown on the first slide of each section: the previous answer, then this section's question):
+
+- II, relation *therefore*: "I derived four requirements. II asks: which design meets them, and can it work?"
+- III, relation *which raises the question*: "II chose a concept and showed it is plausible on paper. III asks: does it work in hands?"
+- IV, relation *so what*: "III tested the mechanism and the use. IV asks: against the original requirements, what is verified?"
+
+**Roadmap:** I Research to requirements > II Concept and feasibility > III Build and test > IV Validation and limits. Because the deck has 12 main slides, section openers are the first content slide of each section, not separate divider slides (`references/signposting.md`).
+
 ---
 
 ## Phase 4 - Slide-by-Slide Architecture
@@ -194,6 +211,54 @@ Next: Phase 3 - Section Architecture.
 ### Headline chain
 
 > A handheld palm-lever opener lets people with weak grip open hard jars one-handed, and here is the evidence and where it stops. Six of nine older participants gave up on a jar within two minutes, and eight feared dropping it. The difficulty is holding the jar and turning the lid at once with one weak hand, and existing aids fail on setup and fit. Four requirements follow, three traced to evidence and one, palm force, an assumption. Of three concepts, only the handheld band opener meets R1 to R3. A capstan calculation and friction tests indicate the band can hold lids up to 89 mm on dry glass. The works-like rig held 11 of 12 lid types at the highest measured torque. Seven of eight participants opened a hard jar unaided within 60 seconds, against two of eight with their usual method. Two test results changed the design. The final design meets R1 to R3 on current evidence, while R4 and wet jars are unverified. The evidence comes from eight participants, five returning, on dry jars in one session. Next, verify palm force and wet-jar performance with new participants before any production claim.
+
+### Signpost outline
+
+> Markers, titles and connector chips only. Listener test: reading just this reproduces the argument.
+
+```text
+I. The requirements come from observation and measurement, and one of them is an assumption
+   1 A handheld palm-lever opener lets people with weak grip open hard jars one-handed, and here is the evidence and where it stops   [opens]
+   2 Six of nine older participants gave up on a jar within two minutes, and eight feared dropping it   [because]
+   3 The core difficulty is holding the jar and turning the lid at once with one weak hand, and existing aids fail on setup and fit   [therefore]
+   4 Four requirements follow from the research; three are traced to evidence and one, palm force, is an assumption   [therefore]
+II. Only one concept meets R1-R3, and its mechanism is physically plausible
+   1 Of three concepts, only the handheld band opener meets all of R1-R3   [answers]
+   2 A capstan calculation and bench friction tests indicate the band can hold lids up to 89 mm on dry glass   [which raises the question]
+III. The mechanism held in 11 of 12 lid types, and users succeeded 7 of 8
+   1 The works-like rig held 11 of 12 lid types at the highest measured torque; one lid with residue slipped   [answers]
+   2 Seven of eight participants opened a hard jar unaided within 60 seconds, against two of eight with their usual method   [therefore]
+   3 Two test results changed the design: a grippier band after the slip, and a larger handle after two users with large hands rated it uncomfortable   [as a result]
+IV. R1-R3 are met on current evidence; R4 and wet jars are not yet verified
+   1 The final design meets R1-R3 on current evidence; R4 and wet-jar performance are unverified   [answers]
+   2 The evidence comes from eight participants, five of them returning, on dry jars in a single session   [however]
+   3 Next, verify palm force and wet-jar performance with new participants before making any production claim   [therefore]
+```
+
+### Path chain table
+
+> Every link in presentation order. The relation is the connector chip; at a section boundary it is the relation recorded in the relay line. "Why the second must follow" is the previous card's field 8.
+
+| From (address, page) | To (address, page) | Relation | Why the second must follow | What the audience sees |
+|---|---|---|---|---|
+| Roadmap (slide 1) | I·1 (p.1) | opens | The deck states its answer and its four sections first | Roadmap with the section claims |
+| I·1 (p.1) | I·2 (p.2) | because | The claim only matters if the problem is real, so slide 2 shows what the research found. | Chip "because", tracker on I |
+| I·2 (p.2) | I·3 (p.3) | therefore | Findings are not yet insights. Slide 3 asks what they mean. | Chip "therefore", tracker on I |
+| I·3 (p.3) | I·4 (p.4) | therefore | An insight guides a design only after it becomes a testable requirement (slide 4). | Chip "therefore", tracker on I |
+| I·4 (p.4) | II·1 (p.5) | therefore | With criteria fixed, concepts can be compared against them (slide 5). | Relay line, chip "answers", tracker moves to II |
+| II·1 (p.5) | II·2 (p.6) | which raises the question | Meeting requirements on paper does not mean it can work physically; slide 6 checks feasibility. | Chip "which raises the question", tracker on II |
+| II·2 (p.6) | III·1 (p.7) | which raises the question | A calculation does not show it works in a real rig; slide 7 tests it. | Relay line, chip "answers", tracker moves to III |
+| III·1 (p.7) | III·2 (p.8) | therefore | Holding a lid is not the same as a person opening a jar; slide 8 tests use. | Chip "therefore", tracker on III |
+| III·2 (p.8) | III·3 (p.9) | as a result | The tests also showed what to change (slide 9). | Chip "as a result", tracker on III |
+| III·3 (p.9) | IV·1 (p.10) | so what | After the changes, the design must be compared with the original requirements (slide 10). | Relay line, chip "answers", tracker moves to IV |
+| IV·1 (p.10) | IV·2 (p.11) | however | The verdict depends on how strong the tests were; slide 11 says. | Chip "however", tracker on IV |
+| IV·2 (p.11) | IV·3 (p.12) | therefore | These limits define the next steps (slide 12). | Chip "therefore", tracker on IV |
+| Appendix A·1 | I·2, I·3 (pp.2-3) | backs | Answers "how were the 9 chosen and what was recorded?" | Appendix label and a pointer back to the main slide |
+| Appendix A·2 | II·2 (p.6) | backs | Lets the industry partner check the numbers | Appendix label and a pointer back to the main slide |
+| Appendix A·3 | II·1 (p.5) | backs | Shows why A and B were not chosen and exposes the single-scorer limit | Appendix label and a pointer back to the main slide |
+
+**Path check:** 11 links between main slides, plus 3 appendix links; no blank link, no dead end, no orphan; each section boundary has a relay; slide 10 (IV·1) is the validation recap against R1-R4 and slide 12 returns to the thesis with the next steps.
+
 
 ### Cards
 
@@ -209,6 +274,15 @@ Next: Phase 3 - Section Architecture.
 **8. Transition to Next Slide:** The claim only matters if the problem is real, so slide 2 shows what the research found.
 **9. Suggested Visual Form:** Photo of the prototype in use with the claim and the "not yet verified" list beside it.
 **10. Evidence Source / Confidence:** E11, gaps G2-G3 | Medium
+**11. Hierarchy Label & On-slide Signposts:** `I·1` (page 1) | tracker `[I] · II · III · IV` | chip: **opens**
+```text
+Roadmap: I Research to requirements > II Concept and feasibility > III Build and test > IV Validation and limits
+(one claim, two limits)
+1) Claim: 7 of 8 opened a hard jar unaided within 60 s, against 2 of 8 with their usual method (E11)
+2) Not yet verified
+   a. Palm force, R4 (G2)
+   b. Wet and oily jars (G3)
+```
 
 ### Slide 2 | Section: S1
 
@@ -222,6 +296,15 @@ Next: Phase 3 - Section Architecture.
 **8. Transition to Next Slide:** Findings are not yet insights. Slide 3 asks what they mean.
 **9. Suggested Visual Form:** Photo strip from the sessions with count callouts; sample size on the slide.
 **10. Evidence Source / Confidence:** S1, S2, E1, E2, E5 | Medium (n=9; small)
+**11. Hierarchy Label & On-slide Signposts:** `I·2` (page 2) | tracker `[I] · II · III · IV` | chip: **because**
+```text
+(three findings)
+1) 6 of 9 abandoned at least one jar within 2 minutes (E1)
+2) 8 of 9 feared dropping or breaking a glass jar (E2)
+3) 29 of 41 survey respondents ranked jar opening in their top three difficulties (E5)
+   a. Self-report
+   b. Convenience sample (G8)
+```
 
 ### Slide 3 | Section: S1
 
@@ -235,6 +318,16 @@ Next: Phase 3 - Section Architecture.
 **8. Transition to Next Slide:** An insight guides a design only after it becomes a testable requirement (slide 4).
 **9. Suggested Visual Form:** Two annotated photos (body-brace and an unused aid) with the supporting counts.
 **10. Evidence Source / Confidence:** S1, E3, E4 | Medium (n=9; single coder; G1)
+**11. Hierarchy Label & On-slide Signposts:** `I·3` (page 3) | tracker `[I] · II · III · IV` | chip: **therefore**
+```text
+(two observations and the insight they support)
+1) Observation: 7 of 9 pressed the lid against body or counter, or used the palm (E3)
+2) Observation: 4 of 5 owned aids sit unused (E4)
+   a. Setup effort: 3 participants
+   b. Lid fit: 2 participants
+3) Insight (interpretation): the difficulty is holding and turning at once with one weak hand; aids fail on setup and fit
+Coded by one author (G1)
+```
 
 ### Slide 4 | Section: S1
 
@@ -248,6 +341,14 @@ Next: Phase 3 - Section Architecture.
 **8. Transition to Next Slide:** With criteria fixed, concepts can be compared against them (slide 5).
 **9. Suggested Visual Form:** Trace table: requirement / source evidence / how it will be verified.
 **10. Evidence Source / Confidence:** E3, E4, E6, A1 | R1-R3: Medium; R4: **None** (assumption)
+**11. Hierarchy Label & On-slide Signposts:** `I·4` (page 4) | tracker `[I] · II · III · IV` | chip: **therefore**
+```text
+(four requirements)
+1) R1 one-handed palm operation <- E3
+2) R2 no setup step <- E4
+3) R3 lids of 40-90 mm <- E6 (43-89 mm measured)
+4) R4 palm force of 25 N or less <- A1, an assumption, not measured (G2)
+```
 
 ### Slide 5 | Section: S2 Concept and feasibility
 
@@ -261,6 +362,15 @@ Next: Phase 3 - Section Architecture.
 **8. Transition to Next Slide:** Meeting requirements on paper does not mean it can work physically; slide 6 checks feasibility.
 **9. Suggested Visual Form:** Concept comparison matrix with sketches and requirement ticks.
 **10. Evidence Source / Confidence:** S5, E9 | Low (single scorer; G5). *Form note:* the egg-shaped handle is a design judgement, supported only by the palm use in E3 (G6); it is not presented as a research result.
+**11. Hierarchy Label & On-slide Signposts:** `II·1` (page 5) | tracker `I · [II] · III · IV` | chip: **answers**
+```text
+Relay line: I derived four requirements. II asks: which design meets them, and can it work?
+(three concepts)
+1) A, under-cabinet clamp: fails R2 (needs installation)
+2) B, countertop base with lever: fails R3 (fixed jaws cover only part of the range)
+3) C, handheld palm lever with a self-tightening band: meets R1-R3
+Scored by the author alone (G5)
+```
 
 ### Slide 6 | Section: S2
 
@@ -274,6 +384,14 @@ Next: Phase 3 - Section Architecture.
 **8. Transition to Next Slide:** A calculation does not show it works in a real rig; slide 7 tests it.
 **9. Suggested Visual Form:** Free-body schematic of the band with the equation and the measured range.
 **10. Evidence Source / Confidence:** S4, E6, E7, E8 | Medium (dry only; G3)
+**11. Hierarchy Label & On-slide Signposts:** `II·2` (page 6) | tracker `I · [II] · III · IV` | chip: **which raises the question**
+```text
+(three pieces of feasibility evidence)
+1) Friction coefficient 0.45-0.60 on dry glass (E7, 6 trials)
+2) Capstan amplification of 4.1x to 6.6x over a half wrap (E8)
+3) Lid range 43-89 mm, opening torque 1.1-4.6 N·m (E6)
+Limit: dry glass only (G3)
+```
 
 ### Slide 7 | Section: S3 Build and test
 
@@ -287,6 +405,13 @@ Next: Phase 3 - Section Architecture.
 **8. Transition to Next Slide:** Holding a lid is not the same as a person opening a jar; slide 8 tests use.
 **9. Suggested Visual Form:** Results table by lid type with the slipped lid highlighted.
 **10. Evidence Source / Confidence:** S6, E10 | Medium (bench only, dry lids except the one residue lid)
+**11. Hierarchy Label & On-slide Signposts:** `III·1` (page 7) | tracker `I · II · [III] · IV` | chip: **answers**
+```text
+Relay line: II chose a concept and showed it is plausible on paper. III asks: does it work in hands?
+(a hypothesis and its result)
+1) Hypothesis: a self-tightening band holds lids from 43 to 89 mm at 4.6 N·m
+2) Result: 11 of 12 lid types held; the 89 mm lid with residue slipped (E10)
+```
 
 ### Slide 8 | Section: S3
 
@@ -300,6 +425,13 @@ Next: Phase 3 - Section Architecture.
 **8. Transition to Next Slide:** The tests also showed what to change (slide 9).
 **9. Suggested Visual Form:** Paired dot chart per participant: usual method vs prototype, with the criterion line.
 **10. Evidence Source / Confidence:** S7, E11, E13, E14 | Medium (n=8; 5 returning; single coder for E14)
+**11. Hierarchy Label & On-slide Signposts:** `III·2` (page 8) | tracker `I · II · [III] · IV` | chip: **therefore**
+```text
+(two results)
+1) Success: 7 of 8 opened a hard jar unaided within 60 s, against 2 of 8 with their usual method (E11); criterion set beforehand: at least 6 of 8
+2) Use: 8 of 8 began turning after one placement action (E14, single coder)
+Limits: 5 of 8 returning, single session, dry jars, timed by the team (E13, G4)
+```
 
 ### Slide 9 | Section: S3
 
@@ -313,6 +445,14 @@ Next: Phase 3 - Section Architecture.
 **8. Transition to Next Slide:** After the changes, the design must be compared with the original requirements (slide 10).
 **9. Suggested Visual Form:** Before/after detail photos, each with the test result that caused it.
 **10. Evidence Source / Confidence:** S6, S7, E10, E12 | Low (neither change fully retested; G7)
+**11. Hierarchy Label & On-slide Signposts:** `III·3` (page 9) | tracker `I · II · [III] · IV` | chip: **as a result**
+```text
+(two changes)
+1) Grippier band, after the slip (E10)
+   a. Retested on that lid only: held
+   b. Not retested on the other lid types (G7)
+2) Larger handle, after 2 of 8 users with the largest hands rated palm force low (E12); not retested
+```
 
 ### Slide 10 | Section: S4 Validation and limits
 
@@ -326,6 +466,15 @@ Next: Phase 3 - Section Architecture.
 **8. Transition to Next Slide:** The verdict depends on how strong the tests were; slide 11 says.
 **9. Suggested Visual Form:** Requirements table: requirement / evidence / status / confidence.
 **10. Evidence Source / Confidence:** E10-E14 | Medium for R1-R3; None for R4
+**11. Hierarchy Label & On-slide Signposts:** `IV·1` (page 10) | tracker `I · II · III · [IV]` | chip: **answers**
+```text
+Relay line: III tested the mechanism and the use. IV asks: against the original requirements, what is verified?
+(four requirements checked)
+1) R1 one-handed palm operation: met (E11, E14)
+2) R2 no setup step: met (E14; single coder)
+3) R3 lids of 40-90 mm: met on dry lids (E10)
+4) R4 palm force: unverified; only subjective comfort recorded (E12; G2)
+```
 
 ### Slide 11 | Section: S4
 
@@ -339,6 +488,13 @@ Next: Phase 3 - Section Architecture.
 **8. Transition to Next Slide:** These limits define the next steps (slide 12).
 **9. Suggested Visual Form:** Limits table: limit / effect on claim / how to close.
 **10. Evidence Source / Confidence:** E13, gap register | High (a description of the team's own limits)
+**11. Hierarchy Label & On-slide Signposts:** `IV·2` (page 11) | tracker `I · II · III · [IV]` | chip: **however**
+```text
+(three limits)
+1) Sample: 8 participants, 5 of them returning (E13)
+2) Conditions: dry jars, a single session
+3) Coding and scoring: one coder (G1), one scorer (G5)
+```
 
 ### Slide 12 | Section: S4
 
@@ -352,14 +508,23 @@ Next: Phase 3 - Section Architecture.
 **8. Transition to Next Slide:** End of the main line; the appendix follows for questions.
 **9. Suggested Visual Form:** Short timeline of the verification steps, each tagged with the gap it closes.
 **10. Evidence Source / Confidence:** Slides 10-11, gap register | Medium (a plan; no result yet)
+**11. Hierarchy Label & On-slide Signposts:** `IV·3` (page 12) | tracker `I · II · III · [IV]` | chip: **therefore**
+```text
+(five verification steps)
+1) Force-sensor test of palm force (G2)
+2) Wet and oily lids (G3)
+3) Re-run T1 with the new band on all 12 lid types (G7)
+4) Independent participant group (G4)
+5) Second coder for the observation notes (G1)
+```
 
 ### Appendix
 
-**A1 - Observation protocol and sample (backs slides 2-3).** *Reason:* answers "how were the 9 chosen and what did you record?" *Relationship:* detail for slides 2-3. *Source/Confidence:* S1 | High as a description. *Visual:* protocol outline with participant table. *Headline:* "Nine participants aged 62-84 each opened three jars in their own kitchens".
+**A1 - Observation protocol and sample (backs slides 2-3).** *Reason:* answers "how were the 9 chosen and what did you record?" *Relationship:* detail for slides 2-3. *Source/Confidence:* S1 | High as a description. *Visual:* protocol outline with participant table. *Headline:* "Nine participants aged 62-84 each opened three jars in their own kitchens". *Hierarchy:* Appendix A·1; backs I·2 and I·3 (pages 2-3).
 
-**A2 - Capstan calculation and friction data (backs slide 6).** *Reason:* lets the industry partner check the numbers. *Relationship:* detail for slide 6. *Source/Confidence:* S4, E7, E8 | Medium (dry only; G3). *Visual:* equation, six trials. *Headline:* "Six friction trials give mu of 0.45 to 0.60 and a capstan ratio of 4.1 to 6.6 over a half wrap".
+**A2 - Capstan calculation and friction data (backs slide 6).** *Reason:* lets the industry partner check the numbers. *Relationship:* detail for slide 6. *Source/Confidence:* S4, E7, E8 | Medium (dry only; G3). *Visual:* equation, six trials. *Headline:* "Six friction trials give mu of 0.45 to 0.60 and a capstan ratio of 4.1 to 6.6 over a half wrap". *Hierarchy:* Appendix A·2; backs II·2 (page 6).
 
-**A3 - Rejected concepts and the scoring (backs slide 5).** *Reason:* shows why A and B were not chosen and exposes the single-scorer limit (G5). *Relationship:* detail for slide 5. *Source/Confidence:* S5, E9 | Low. *Visual:* sketches with scoring notes. *Headline:* "Concepts A and B each fail one requirement, by the author's scoring".
+**A3 - Rejected concepts and the scoring (backs slide 5).** *Reason:* shows why A and B were not chosen and exposes the single-scorer limit (G5). *Relationship:* detail for slide 5. *Source/Confidence:* S5, E9 | Low. *Visual:* sketches with scoring notes. *Headline:* "Concepts A and B each fail one requirement, by the author's scoring". *Hierarchy:* Appendix A·3; backs II·1 (page 5).
 
 ---
 
@@ -376,6 +541,7 @@ The audit ran on the first Phase 4 draft. It found:
 | A-05 | Major | Draft slide 6 | "The band will hold any jar" from a dry-glass calculation | Reworded: "indicate ... on dry glass"; G3 stated |
 | A-06 | Major | Draft slide 8 | Test success criterion not shown; looked post hoc | Criterion shown with its pre-test date source (S7) |
 | A-07 | Minor | Draft slides 2 and 5 | The survey figure (71%) was used as proof of need | Limited to "a common difficulty in this sample" (G8) |
+| A-08 | Minor | Draft section titles and connectors | Sections were titled by topic ("Research", "Concept", "Test", "Validation"), and slide 10 followed slide 9 with no named relation to the original requirements | Titles rewritten as claims (I to IV); relay lines added at each opener; every slide has a connector chip; path chain table built |
 
 **Design-chain checks (final structure):**
 
@@ -389,6 +555,8 @@ The audit ran on the first Phase 4 draft. It found:
 | 6 Test results support the conclusion | Partial: returning participants, single session (G4) | 8 |
 | 7 No jump from research to form | Pass after A-02 | 3-5 |
 | 8 No hypothesis presented as a finding | Pass after A-03 and A-04; R4 labelled | 4, 10 |
+
+**Path integrity (signposting pass):** 11 links between main slides plus 3 appendix links, no blank link, no dead end, no orphan. Listener test passed: the signpost outline alone reproduces the argument. The III to IV boundary is carried by the relay line ("so what") and the first slide of IV answers its question.
 
 **Audience questions:** why this form? (slides 4-5; form flagged as judgement); was the test independent? (slide 11, stated); was force measured? (**no**, slide 10); does it work on wet jars? (**untested**, slide 11); how were concepts scored? (A3, single scorer).
 

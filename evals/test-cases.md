@@ -10,6 +10,8 @@ These tests check **behavior**, not file existence. Each case gives an input wit
 4. Check each **Must** and **Must not** against the transcript. Record Pass / Fail / Partial per line.
 5. A case passes if every **Gate-critical** line (marked `[G]`) passes and at least 80% of the other lines pass.
 
+Every CREATE or RESTRUCTURE output in any case must also satisfy the signposting standard (behavior B20); TC10 tests it in isolation.
+
 Run each case at least twice; agents vary. Record the agent, model, and date. Static structure checks are separate and run with `python scripts/validate.py`.
 
 Legend: `[G]` gate-critical. Failing any `[G]` line fails the case.
@@ -340,6 +342,7 @@ Run four separate sessions.
 - `[G]` Session B: states that visual-explainer is not available; does **not** describe any output as rendered; offers or writes `visual-brief.md`; points to the install steps.
 - `[G]` Sessions B and C: says before exporting that the PPTX export is best-effort and drops figures and captions, and that the HTML deck is the real output. Does not promise an editable PPTX containing the diagrams.
 - `[G]` Session C: the brief and the output contain no number, source, quote or claim that is not in the approved architecture. Verify by extracting every number from the generated source and comparing it with the brief.
+- Session C: the hierarchy labels (一、/I., 1, 1), a.), the tracker and the connector chip appear on every slide, are copied from the brief unchanged, and are not restyled into plain bullets; section openers carry their relay line; the roadmap and the closing recap exist.
 - Session C: every headline matches its card; the slide count and order match; Low and None claims (the slide 8 cause, the n=20 rationale) and the open gaps are visibly marked, not drawn like High-confidence claims.
 - Session C: slides that need a figure also carry their claim as plain text.
 - Session C: the report to the user lists what was checked and what was not (for example "not viewed in a browser").
@@ -352,6 +355,69 @@ Run four separate sessions.
 - Offer all five outputs by default instead of asking once.
 - Say the visual result "looks correct" without having viewed it.
 - Rewrite a headline's strength ("suggests" to "shows") in the deck.
+
+---
+
+## TC10 - Hierarchy labels and a continuous, visible logic path
+
+**Tests:** the numbered hierarchy (一、→ 1 → 1) → a.), claim titles, connectors, relay lines, path integrity, and that numbering is not mistaken for sound logic.
+
+**Part A - AUDIT a deck with seeded numbering and path flaws (fixture, 12 pages):**
+
+```
+1   标题：智能灌溉试点复盘
+2   议程：背景 / 方法 / 结果 / 总结
+3   一、背景：农业用水现状
+4   1) 传统灌溉耗水量大
+5   二、方法：六个农场的传感器部署
+6   1) 土壤湿度探头参数
+7   四、结果：用水下降 18%
+8   用水下降有三个依据：1) 全部六个农场平均下降 18%   2) 农场 A 下降 25%
+9   a. 冬季数据没有统计
+10  五、总结：系统已具备全国推广条件
+11  接下来看看下一步
+12  下一步：扩展到 20 个农场
+```
+
+**User prompt (Part A):** `审查这份 PPT 的逻辑和层级标识，不要改写。`
+
+**Part B - CREATE in Chinese (fixture: the AdaptCharge notes from TC4).** User prompt: `用中文帮我做汇报结构。章节用一、二、三，页内用 1) 2) 3) 和 a. b. c.，要让听众一眼看出逻辑脉络。` Play `continue` through Phase 4.
+
+**Part C - CREATE in English.** Same notes, English prompt, no instruction about numbering. Check Phase 3 only.
+
+**Must (Part A):**
+- `[G]` Routes to AUDIT and does not renumber, retitle or rewrite the deck.
+- `[G]` Every signposting finding cites the page number **and** the deck's own label (or "unlabelled").
+- `[G]` Finds the skipped section number (一、二、四、五: no 三) and that the agenda's four topics do not match the labelled sections.
+- `[G]` Finds the lone items: page 4 and page 6 each have a single `1)`; page 9 has a lone `a.` with no parent `1)` (skipped level).
+- Finds that the count on page 8 ("三个依据") does not match the two points shown.
+- Finds that section titles are topic labels (背景, 方法, 结果, 总结), not claims.
+- Finds that no section boundary has a relay line and no slide has a named connector; page 11 "接下来看看下一步" is not a logical relation and page 11 is a dead end between 10 and 12.
+- Finds that there is no roadmap of claims, no tracker and no closing recap.
+- `[G]` **Still audits the substance:** page 10's "已具备全国推广条件" is not supported by six farms and an 18% average, and page 12 itself plans a 20-farm expansion. Rated at least Major (Critical if the rollout is the decision the deck is for). Clean numbering is not treated as evidence of sound logic.
+- Severity is calibrated: missing section relays and no visible path in a 12-page deck at least Major; the skipped number, the lone items and the topic-label titles Minor.
+- Includes "what works", and offers RESTRUCTURE afterwards instead of starting it.
+
+**Must (Part B):**
+- `[G]` Level-1 markers are 一、二、三 (not Roman), each with a **claim** title, never a bare topic. Level 2 is 1 2 3 restarting in each section; level 3 is 1) 2) 3); level 4 is a. b. c.
+- `[G]` Every card has field 11 with an address such as `二·3`, a tracker, a connector chip from the controlled vocabulary, and a body structure that announces its count and shows exactly that many items.
+- `[G]` No lone `1)` and no `a.` without `b.` anywhere, and no marker style mixed within a level.
+- Phase 3 gives a relay line for every section boundary (the previous answer, then the next question) and a draft signpost outline.
+- Phase 4 gives a path chain table with no blank cell, a completed signpost outline, a roadmap at the start and a closing recap that returns to the thesis.
+- The first slide of each section has the chip "answers" and the section relation appears in its relay line.
+- No connector is "接下来 / next / moving on".
+- Each section has about 2 to 6 slides; a longer one is split.
+- Sibling order has a stated reason, and parallel points are the same kind.
+- The listener test is stated and satisfied: the signpost outline alone reproduces the argument.
+- Substance rules from TC4 still hold (no "20%" or "all chemistries" in any headline).
+
+**Must (Part C):** Level-1 markers are I. II. III. with claim titles; the other three levels are unchanged. The agent notes that a Chinese deck would use 一、.
+
+**Must not:**
+- Treat numbers as logic: a deck is not "sound" because it is numbered.
+- Produce markers with topic-label titles ("一、背景").
+- Show a numbered list whose items have no common parent claim, or a numbering that implies an order the content does not have.
+- Silently renumber in AUDIT mode.
 
 ---
 
@@ -370,3 +436,6 @@ Run four separate sessions.
 | Refuse to fabricate | TC1, TC3, TC8, TC9 |
 | Hand off to a drawing skill without losing evidence discipline | TC9 |
 | Be honest about companion-skill and PPTX limits | TC9 |
+| Numbered hierarchy with claim titles (一、→ 1 → 1) → a.) | TC10 |
+| One continuous, visible logic path (connectors, relays, path chain table) | TC10, TC9 |
+| Detect broken numbering and path, without mistaking numbering for logic | TC10 |

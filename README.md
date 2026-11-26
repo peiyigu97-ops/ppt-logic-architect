@@ -55,7 +55,24 @@ Every phase ends with a gate: the goal, the result, what is unresolved (marked `
 
 ## What a slide card contains
 
-Every slide gets all ten fields: Slide Number, Section, Action-oriented Headline, Core Message, Supporting Evidence, Reason for Inclusion, Logical Relationship with Previous Slide, Transition to Next Slide, Suggested Visual Form, and Evidence Source / Confidence. A title and a few keywords are not a card.
+Every slide gets all eleven fields: Slide Number, Section, Action-oriented Headline, Core Message, Supporting Evidence, Reason for Inclusion, Logical Relationship with Previous Slide, Transition to Next Slide, Suggested Visual Form, Evidence Source / Confidence, and Hierarchy Label & On-slide Signposts. A title and a few keywords are not a card.
+
+## One visible logic path
+
+The deck must read as a single chain, between sections and between every slide inside them, and the audience must be able to **see** it. The skill builds this in, not as an afterthought:
+
+| Level | Chinese deck | Other languages | Marks | Title is |
+|---|---|---|---|---|
+| 1 | 一、二、三、 | I. II. III. | A section | The section **claim** |
+| 2 | 1 2 3 | 1 2 3 | A slide in the section | The assertion headline |
+| 3 | 1) 2) 3) | 1) 2) 3) | A point on the slide | A short claim phrase |
+| 4 | a. b. c. | a. b. c. | A detail under a point | A label or value |
+
+Every slide carries an address (for example `三·2`), a **tracker** showing the current section among all sections, and a **connector chip** that names its relation to the previous slide (because, therefore, however, for example, as a result, which raises the question...). Each section opens with a **relay line** (the previous section's answer, then this section's question), the deck opens with a roadmap of section claims, and it closes by returning to the thesis. "Next, we look at..." is not a relation and is rejected.
+
+Phase 4 produces a **path chain table** of every link in presentation order, and Phase 5 checks it: no blank link, no dead end, no orphan, every section boundary relayed, and a listener test (the markers, titles and connectors alone must reproduce the argument). AUDIT mode checks existing decks the same way. Rules, vocabulary and severity are in [`references/signposting.md`](skills/ppt-logic-architect/references/signposting.md); a Chinese worked example is in [`examples/signposting-example-zh.md`](skills/ppt-logic-architect/examples/signposting-example-zh.md).
+
+Numbering makes the structure visible. It does not make the logic sound, and the audit still checks the logic.
 
 ## Methodology
 
@@ -196,8 +213,8 @@ Requirements: the agent must be able to read the files you point to. File-write 
 
 Two layers, deliberately separate:
 
-- **Static** (`python scripts/validate.py`): frontmatter fields and limits, name equals directory, every relative reference resolves, all ten card fields are present, examples are complete and labelled fictional. This proves the package is well-formed. It proves nothing about behavior.
-- **Behavioral** ([`evals/test-cases.md`](evals/test-cases.md)): nine cases with seeded flaws (scattered notes with conflicting numbers, a messy deck with duplicates, a design project that jumps from research to form, a technical result within instrument error, an over-claimed conclusion, redundant slides, gate and skip handling, pressure to fabricate, and the visual hand-off). Each has observable must / must-not lines and an answer key in [`evals/expected-behavior.md`](evals/expected-behavior.md).
+- **Static** (`python scripts/validate.py`): frontmatter fields and limits, name equals directory, every relative reference resolves, all eleven card fields are present, every example card has a hierarchy label, each example has a signpost outline and a path chain table, no body structure has a lone `1)` or `a.`, examples are complete and labelled fictional. This proves the package is well-formed. It proves nothing about behavior.
+- **Behavioral** ([`evals/test-cases.md`](evals/test-cases.md)): nine cases with seeded flaws (scattered notes with conflicting numbers, a messy deck with duplicates, a design project that jumps from research to form, a technical result within instrument error, an over-claimed conclusion, redundant slides, gate and skip handling, pressure to fabricate, the visual hand-off, and broken numbering and path). Each has observable must / must-not lines and an answer key in [`evals/expected-behavior.md`](evals/expected-behavior.md).
 
 ## Limitations
 
