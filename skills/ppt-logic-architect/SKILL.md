@@ -1,10 +1,10 @@
 ---
 name: ppt-logic-architect
-description: Designs the logic of a presentation before any slides are made. Extracts facts and evidence from raw material, builds a central thesis and argument tree, orders sections with explicit progression, specifies every slide (headline, core message, evidence, transitions), and audits the whole deck for logical gaps. Three modes - CREATE (raw material to deck architecture), RESTRUCTURE (rework an existing deck or outline), AUDIT (review only, no rewriting). Includes a design-research and engineering-reasoning module for industrial design, HCI, hardware prototyping, portfolios and thesis defenses. Use when asked for a PPT outline, storyline, slide-by-slide plan, argument structure, or logic review. Does not lay out or render slides. 用于 PPT 逻辑架构、大纲、叙事结构、答辩/汇报/作品集梳理、已有 PPT 重构与逻辑审查。
+description: Designs the logic of a presentation before any slides are made. Extracts facts and evidence from raw material, builds a central thesis and argument tree, orders sections with explicit progression, specifies every slide (headline, core message, evidence, transitions), and audits the whole deck for logical gaps. Three modes - CREATE (raw material to deck architecture), RESTRUCTURE (rework an existing deck or outline), AUDIT (review only, no rewriting). Includes a design-research and engineering-reasoning module for industrial design, HCI, hardware prototyping, portfolios and thesis defenses. Use when asked for a PPT outline, storyline, slide-by-slide plan, argument structure, or logic review. Does not lay out or render slides itself; after approval it can hand the architecture to the visual-explainer skill for diagrams and HTML decks. 用于 PPT 逻辑架构、大纲、叙事结构、答辩/汇报/作品集梳理、已有 PPT 重构与逻辑审查。
 license: MIT
 metadata:
   author: ppt-logic-architect contributors
-  version: "0.1.0"
+  version: "0.2.0"
 ---
 
 # PPT Logic Architect
@@ -84,6 +84,7 @@ Load only what the current step needs. Do not read everything up front.
 | Phase 4: writing headlines and cards | `references/assertion-evidence.md` |
 | Phase 5 and AUDIT mode | `references/logic-audit.md` (plus `references/design-research-reasoning.md` for design or engineering content) |
 | Phase 6 | the five files in `templates/` |
+| After Phase 6, only if the user asks for diagrams, a visual deck or a PPTX | `references/visual-handoff.md` and `templates/visual-brief.md` |
 | The user asks what good output looks like | `examples/research-presentation.md` or `examples/design-project-presentation.md` |
 
 ## Evidence discipline (applies in every phase)
@@ -123,9 +124,13 @@ Write these from the templates, filled with the approved content, never left as 
 
 Ask where to write them if there is no obvious location; default to `./ppt-architecture/`. Never overwrite existing files without asking. If you cannot write files, present them in the chat instead.
 
+## Optional visual hand-off (after Phase 6, only on request)
+
+This skill does not draw. If the user, after approving the architecture, wants diagrams, a visual deck or a PPTX, follow `references/visual-handoff.md`: write `templates/visual-brief.md` from the approved cards and pass it to the **visual-explainer** skill if it is installed. If it is not installed, say so and stop at the brief. The brief is the only content the drawing step may use: no new facts, headlines copied verbatim, confidence and gaps kept visible, and the output checked against the brief. Offer this once after Phase 6; never start it unasked, and never before approval. Tell the user that visual-explainer's PPTX export is best-effort and drops figures, and that neither skill edits an existing `.pptx` in place.
+
 ## Do not
 
-- Do not generate slides, a `.pptx`, or visual design. Offer the approved architecture as the hand-off to a slide-building tool.
+- Do not generate slides, a `.pptx`, or visual design yourself. Visuals happen only through the hand-off above, after approval and on request.
 - Do not fabricate or "fill in" data, quotes, citations, sample sizes, or sources, not even as plausible placeholders. Use `[value needed]` or a `G#` gap.
 - Do not delete user content without a stated reason. In RESTRUCTURE, every original slide appears in the mapping; when unsure, demote to the appendix rather than remove.
 - Do not rewrite the deck in AUDIT mode. Report findings and suggested fixes only.

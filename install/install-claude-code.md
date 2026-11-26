@@ -64,6 +64,17 @@ On Windows, creating symlinks needs Developer Mode or an elevated shell. If in d
 
 The expected first reply names the mode (AUDIT), reconstructs what the deck argues, and ends with a phase gate. If the skill is not listed, check the path above and that `SKILL.md` starts with `---` on line 1.
 
+## Optional companion: visual-explainer
+
+Only needed for the visual hand-off (see `README.md`, "Pair it with visual-explainer"). The steps below are copied from visual-explainer's own README (v0.16.0); **they were not run here**.
+
+```text
+/plugin marketplace add nicobailon/visual-explainer
+/plugin install visual-explainer@visual-explainer-marketplace
+```
+
+Claude Code namespaces plugin commands as `/visual-explainer:<command>`, for example `/visual-explainer:generate-slides`. Generated pages are HTML and need a browser. Start a new session afterwards, then check that both skills are listed. If visual-explainer is missing, ppt-logic-architect says so and stops at `visual-brief.md`.
+
 ## Update and uninstall
 
 - Update: `./install/install.sh --target claude --force`. The previous install is moved to `~/.claude/ppt-logic-architect-backups/<timestamp>/`, outside the skills directory, so it cannot load as a duplicate. Or re-copy.

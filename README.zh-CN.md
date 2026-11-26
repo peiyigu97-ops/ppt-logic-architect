@@ -30,7 +30,7 @@ English: see [README.md](README.md).
 | 控制 | 一步到位 | 六个阶段，每阶段等你确认 |
 | 方法论 | 一套模板套所有 | 按目的和受众选择，并说明为什么选、为什么不选 |
 
-它的定位是**上游**：确认后的 `slide-by-slide.md` 可以作为后续 PPT 制作工具的输入。
+它的定位是**上游**：负责逻辑，不负责画图。需要图表和幻灯片时，可以和 visual-explainer 搭配，见下文"与 visual-explainer 搭配"。
 
 ## 三种模式
 
@@ -150,6 +150,33 @@ Skill 会根据你的请求判断模式，并说明选了哪个。想强制指�
 | `evidence-matrix.md` | 来源、证据条目、主张与证据对照、假设、缺口 |
 | `logic-audit-report.md` | 按严重程度分级的问题及处理结果 |
 
+## 与 visual-explainer 搭配（可选）
+
+本 Skill 只设计逻辑，不画图。[visual-explainer](https://github.com/nicobailon/visual-explainer)（MIT 许可，作者 nicobailon）负责画：以图为主的 HTML 页面、逻辑图和幻灯片。这样分工能守住证据底线：本 Skill 决定"主张什么、证据有多强"，visual-explainer 照着画出来。
+
+第 6 阶段之后，**只有你提出要求时**，Skill 才会根据已确认的卡片写出 `visual-brief.md`，再交给 visual-explainer：
+
+```text
+（完成第 6 阶段并确认架构）
+现在把确认后的架构做成逻辑树图和可视化幻灯片。
+```
+
+| 我们的文件 | 变成 |
+|---|---|
+| `logic-tree.md` | 论证树图页面，带置信度标记，证据缺口用虚线节点 |
+| `slide-by-slide.md` | HTML 幻灯片，每张卡片一页 |
+| `logic-audit-report.md` | 审查页：结论、证据图、风险、下一步 |
+| `evidence-matrix.md` | 带状态标记的表格 |
+
+交接时遵守的规则（详见 [`references/visual-handoff.md`](skills/ppt-logic-architect/references/visual-handoff.md)）：图里不得出现新数字或新主张；标题逐字照抄；每张卡片都成为一页；Low / None 置信度和未解决的缺口在图中必须可见；生成结果要回头对照简报检查。
+
+**你必须知道的限制：**
+
+- **导出 PPTX 会丢掉图。** visual-explainer 自己的文档写明，`--pptx` 导出是"尽力而为"的静态转换，会丢掉 SVG、图表和图注。真正的成品是 HTML 幻灯片，PPTX 只是文字和表格的交接版本。
+- **两个 Skill 都不能原地修改已有的 `.pptx`。** 对你已有的 PPT，RESTRUCTURE 模式会给出每一页"旧页到新页"的映射表，再由人或其他工具去改文件。
+- **尚未端到端运行。** 命令和图表类型是对照 visual-explainer v0.16.0 的文档核对的，没有把两个 Skill 真正跑通过。对应测试用例是 TC9。
+- 没装 visual-explainer 时，Skill 会如实说明，并停在简报这一步。安装步骤见两份安装指南。
+
 两个完整示例（数据均为虚构）在 [`skills/ppt-logic-architect/examples/`](skills/ppt-logic-architect/examples/)：技术研究进展汇报，以及工业设计评审答辩。
 
 ## 如何扩展方法论
@@ -166,14 +193,14 @@ Skill 会根据你的请求判断模式，并说明选了哪个。想强制指�
 分为两层，刻意分开：
 
 - **静态检查**（`python scripts/validate.py`）：Frontmatter 字段与长度、目录名等于 skill 名、所有相对引用可解析、十个卡片字段齐全、示例完整且声明为虚构。它只证明包的结构没问题，**不证明行为正确**。
-- **行为测试**（[`evals/test-cases.md`](evals/test-cases.md)）：八个带"埋入缺陷"的用例，覆盖：数字互相矛盾的零散笔记、含重复页的混乱 PPT、从研究直接跳到造型的设计项目、落在仪器误差内的技术结果、结论超出证据、重复与无效页面、阶段确认与跳转处理、被要求编造数据时的表现。每个用例有可观察的"必须 / 不得"条目，答案和评分规则见 [`evals/expected-behavior.md`](evals/expected-behavior.md)。
+- **行为测试**（[`evals/test-cases.md`](evals/test-cases.md)）：九个带"埋入缺陷"的用例，覆盖：数字互相矛盾的零散笔记、含重复页的混乱 PPT、从研究直接跳到造型的设计项目、落在仪器误差内的技术结果、结论超出证据、重复与无效页面、阶段确认与跳转处理、被要求编造数据时的表现、可视化交接。每个用例有可观察的"必须 / 不得"条目，答案和评分规则见 [`evals/expected-behavior.md`](evals/expected-behavior.md)。
 
 ## 已知限制
 
 - 行为测试用例已写好，但本版本**尚未在真实 Agent 上运行**。请把最初几次使用当作验证的一部分，并反馈失败案例。
 - 输出质量取决于底层模型能否遵循较长的指令。较弱的模型可能跳过确认节点或把问题说轻，测试用例正是为暴露这类情况设计的。
 - 它处理的是结构和证据。它无法核实某个来源是否真实、某个数字是否正确，读不了的内容会明确说明。
-- 它不生成幻灯片、演讲稿或视觉设计。
+- 它自己不画图、不生成幻灯片、不写演讲稿。视觉部分通过可选的 visual-explainer 交接完成，限制见上文。
 
 ## GitHub 仓库建议描述
 

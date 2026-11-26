@@ -4,6 +4,19 @@ All notable changes to this project are recorded here. The format follows [Keep 
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-11-26
+
+### Added
+- Optional visual hand-off to the [visual-explainer](https://github.com/nicobailon/visual-explainer) skill: `references/visual-handoff.md` and `templates/visual-brief.md`. It starts only after Phase 6 approval and an explicit request, and carries the evidence discipline into the visuals (no new facts, headlines verbatim, confidence and gaps visible, output checked against the brief).
+- Test case TC9 (hand-off gate, missing companion, fidelity, PPTX and in-place-edit honesty) and behavior B19.
+- Companion install steps in both install guides.
+
+### Changed
+- `SKILL.md` description and "Do not" rule: the skill still never draws or builds slides itself; visuals go only through the hand-off.
+
+### Known limits
+- visual-explainer's `--pptx` export is best-effort and drops SVG, figures and captions. Neither skill edits an existing `.pptx` in place. The integration was checked against visual-explainer v0.16.0's documentation and has not been run end to end.
+
 ## [0.1.0] - 2026-11-26
 
 ### Added

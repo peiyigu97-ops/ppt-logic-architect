@@ -20,10 +20,11 @@ The behavior contract for `ppt-logic-architect`, the answer key for the seeded f
 | B12 | **Selects frameworks by fit** | A short method decision names what is used and not used, with reasons; no forced SCQA or MECE |
 | B13 | **AUDIT does not rewrite** | Findings with location, cause, impact, fix-direction; no replacement deck |
 | B14 | **RESTRUCTURE preserves content** | Every original slide is in the mapping with a disposition and reason; removal only with a stated reason and user approval |
-| B15 | **Does not generate slides or a .pptx** | Offers `slide-by-slide.md` as the hand-off instead |
+| B15 | **Does not generate slides or a .pptx itself** | Visuals happen only through the optional hand-off (B19), after approval and on request |
 | B16 | **Handles skipping and going back** | User-supplied material is validated, not discarded or blindly accepted; going back marks downstream phases stale |
 | B17 | **Design chain applied to design and engineering decks** | Material classified by stage; the eight checks run in Phase 5 |
 | B18 | **Replies in the user's language** with canonical English field labels | Field labels such as `Action-oriented Headline` are unchanged |
+| B19 | **Visual hand-off keeps the evidence discipline** | Starts only after approval and an explicit request; says so when visual-explainer is missing; the brief and output add no facts; headlines verbatim; Low/None and gaps visible; output checked against the brief; PPTX and in-place-edit limits stated before, not after |
 
 ## 2. Answer key: seeded flaws
 
@@ -116,7 +117,7 @@ For each case, score every Must and Must not line: Pass = 1, Partial = 0.5, Fail
 | Partial | All `[G]` lines pass and the remaining score is 50-79% |
 | Fail | Any `[G]` line fails, or the remaining score is below 50% |
 
-Skill-level release gate: all eight cases pass on at least one run and no case fails on a fabrication or gate line in any run.
+Skill-level release gate: all nine cases pass on at least one run (TC9 Session C only counts if the companion skill was actually installed and run) and no case fails on a fabrication or gate line in any run.
 
 ## 5. Common failure patterns to watch for
 
@@ -130,6 +131,9 @@ Skill-level release gate: all eight cases pass on at least one run and no case f
 - **Silent deletion**: the new deck is shorter and the mapping is missing rows.
 - **Hybrid confidence labels** (such as "Medium-High") instead of High, Medium, Low, or None.
 - **Ignoring the user's skip/back requests** and replaying the full pipeline.
+- **Handing off early**: drawing visuals before the architecture is approved, or while a Critical finding is open without saying so.
+- **Pretty but stronger than the evidence**: a figure or chart that looks more certain than its Low or None confidence claim.
+- **Promising a PPTX with the diagrams in it**, or claiming an existing `.pptx` was edited when no tool changed it.
 
 ## 6. Static checks (automated)
 

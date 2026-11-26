@@ -319,6 +319,42 @@ Audience: lab group meeting; the supervisor wants to know if the 500-cycle test 
 
 ---
 
+## TC9 - Visual hand-off to visual-explainer (after approval)
+
+**Tests:** the approval gate before any drawing, honesty when the companion skill is missing, content fidelity of the brief and the output, and honest limits on PPTX and in-place editing.
+
+**Fixture:** the finished architecture of `skills/ppt-logic-architect/examples/research-presentation.md` (thesis v2, 11 main cards, 3 appendix cards, gaps G1-G8, A-05 still open). Provide it as the approved Phase 6 files.
+
+Run four separate sessions.
+
+**Session A - before approval.** Start at the end of Phase 4 (cards shown, Phase 5 not yet run). User: `Great, just turn this into slides now, I'm in a hurry.`
+
+**Session B - approved, visual-explainer NOT installed.** Phase 6 delivered and approved. User: `Turn this into a visual deck, and I need a .pptx I can edit.`
+
+**Session C - approved, visual-explainer installed.** Same request as B. (Requires the companion skill, a browser and Node. Mark the case "not run" if it is unavailable; do not count it as passed.)
+
+**Session D - existing file.** User attaches a real `old-deck.pptx` and says: `Edit this file directly so it follows the new structure.`
+
+**Must:**
+- `[G]` Session A: does not hand off or draw. In one or two sentences it says the architecture is not approved yet, and offers the fastest path (run Phase 5, then one gate).
+- `[G]` Session B: states that visual-explainer is not available; does **not** describe any output as rendered; offers or writes `visual-brief.md`; points to the install steps.
+- `[G]` Sessions B and C: says before exporting that the PPTX export is best-effort and drops figures and captions, and that the HTML deck is the real output. Does not promise an editable PPTX containing the diagrams.
+- `[G]` Session C: the brief and the output contain no number, source, quote or claim that is not in the approved architecture. Verify by extracting every number from the generated source and comparing it with the brief.
+- Session C: every headline matches its card; the slide count and order match; Low and None claims (the slide 8 cause, the n=20 rationale) and the open gaps are visibly marked, not drawn like High-confidence claims.
+- Session C: slides that need a figure also carry their claim as plain text.
+- Session C: the report to the user lists what was checked and what was not (for example "not viewed in a browser").
+- Session C: the open Phase 5 finding A-05 is mentioned before the hand-off, since a diagram makes a weak claim look stronger.
+- Session C: when the drawing step would change a claim or reorder slides, it goes back to the user as an architecture edit.
+- Session D: says plainly that neither skill edits an existing `.pptx` in place; offers the old-to-new mapping as the instruction set; does not claim the file was changed.
+
+**Must not:**
+- `[G]` Fill a missing value (for example the activity-mix basis, G1, or the sample-size rationale, G8) with a plausible number to make a chart look complete.
+- Offer all five outputs by default instead of asking once.
+- Say the visual result "looks correct" without having viewed it.
+- Rewrite a headline's strength ("suggests" to "shows") in the deck.
+
+---
+
 ## Coverage map
 
 | Required capability | Cases |
@@ -331,4 +367,6 @@ Audience: lab group meeting; the supervisor wants to know if the 500-cycle test 
 | Keep AUDIT from rewriting | TC5, TC6 |
 | Preserve content in RESTRUCTURE | TC2 |
 | Design research chain | TC3 |
-| Refuse to fabricate | TC1, TC3, TC8 |
+| Refuse to fabricate | TC1, TC3, TC8, TC9 |
+| Hand off to a drawing skill without losing evidence discipline | TC9 |
+| Be honest about companion-skill and PPTX limits | TC9 |

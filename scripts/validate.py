@@ -28,13 +28,13 @@ CARD_FIELDS = [
     "Suggested Visual Form", "Evidence Source / Confidence",
 ]
 TEMPLATES = ["master-outline.md", "logic-tree.md", "slide-by-slide.md",
-             "evidence-matrix.md", "logic-audit-report.md"]
+             "evidence-matrix.md", "logic-audit-report.md", "visual-brief.md"]
 EXAMPLES = ["research-presentation.md", "design-project-presentation.md"]
 REFERENCES = [
     "phase-protocol.md", "mode-create.md", "mode-restructure.md", "mode-audit.md",
     "method-selection.md", "pyramid-principle.md", "scqa-framework.md",
     "assertion-evidence.md", "mece-analysis.md", "evidence-based-reasoning.md",
-    "logic-audit.md", "design-research-reasoning.md",
+    "logic-audit.md", "design-research-reasoning.md", "visual-handoff.md",
 ]
 
 failures = []

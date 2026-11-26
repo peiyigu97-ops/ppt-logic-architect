@@ -30,7 +30,7 @@ This skill works on the part that comes first:
 | Control | One shot | Six phases, each ending in an approval gate |
 | Frameworks | One template for everything | Chosen by purpose and audience, and the choice is justified |
 
-It is meant to sit **upstream** of a slide-building tool: its approved `slide-by-slide.md` is a good input for one.
+It is meant to sit **upstream** of a drawing or slide-building tool. For diagrams and decks it pairs with the visual-explainer skill; see [Pair it with visual-explainer](#pair-it-with-visual-explainer-optional).
 
 ## Three modes
 
@@ -148,6 +148,33 @@ Phase 6 writes five files, by default into `./ppt-architecture/`, never overwrit
 | `evidence-matrix.md` | Sources, evidence items, claim-to-evidence map, assumptions, gaps |
 | `logic-audit-report.md` | Findings by severity and their resolution |
 
+## Pair it with visual-explainer (optional)
+
+This skill designs the logic and does not draw. [visual-explainer](https://github.com/nicobailon/visual-explainer) (MIT, by nicobailon) draws: figure-led HTML pages, diagrams and slide decks. The split keeps the evidence honest: this skill decides what is claimed and how well it is supported, and visual-explainer draws exactly that.
+
+After Phase 6, **only if you ask**, the skill writes a `visual-brief.md` from the approved cards and hands it to visual-explainer:
+
+```text
+(finish Phase 6 and approve the architecture)
+Now turn the approved architecture into a logic-tree diagram and a visual deck.
+```
+
+| Our file | Becomes |
+|---|---|
+| `logic-tree.md` | A diagram page of the argument tree, with confidence chips and dashed gap nodes |
+| `slide-by-slide.md` | An HTML slide deck, one slide per card |
+| `logic-audit-report.md` | A review page: verdict, evidence figures, risks, next steps |
+| `evidence-matrix.md` | A table with status chips |
+
+Rules the hand-off keeps (details in [`references/visual-handoff.md`](skills/ppt-logic-architect/references/visual-handoff.md)): no new numbers or claims in the visuals; headlines copied verbatim; every card becomes a slide; Low and None confidence and open gaps stay visible in the picture; and the generated output is checked against the brief.
+
+**Limits you should know about:**
+
+- **The PPTX export drops the diagrams.** visual-explainer's own documentation says its `--pptx` export is best-effort and static, and drops SVG, figures and captions. The HTML deck is the real output; a PPTX is a text-and-table handoff.
+- **Neither skill edits an existing `.pptx` in place.** For a deck you already have, RESTRUCTURE gives an old-to-new mapping of every slide; someone (or another tool) applies it to the file.
+- **Not run end to end yet.** The commands and figure types were checked against visual-explainer v0.16.0's documentation, not by running both skills together. Test case TC9 covers it.
+- If visual-explainer is not installed, the skill says so and stops at the brief. See the install guides for the companion install steps.
+
 Fully worked examples, using fictional data, are in [`skills/ppt-logic-architect/examples/`](skills/ppt-logic-architect/examples/): a research progress review and an industrial-design jury review.
 
 ## Extend the methodology
@@ -170,14 +197,14 @@ Requirements: the agent must be able to read the files you point to. File-write 
 Two layers, deliberately separate:
 
 - **Static** (`python scripts/validate.py`): frontmatter fields and limits, name equals directory, every relative reference resolves, all ten card fields are present, examples are complete and labelled fictional. This proves the package is well-formed. It proves nothing about behavior.
-- **Behavioral** ([`evals/test-cases.md`](evals/test-cases.md)): eight cases with seeded flaws (scattered notes with conflicting numbers, a messy deck with duplicates, a design project that jumps from research to form, a technical result within instrument error, an over-claimed conclusion, redundant slides, gate and skip handling, and pressure to fabricate). Each has observable must / must-not lines and an answer key in [`evals/expected-behavior.md`](evals/expected-behavior.md).
+- **Behavioral** ([`evals/test-cases.md`](evals/test-cases.md)): nine cases with seeded flaws (scattered notes with conflicting numbers, a messy deck with duplicates, a design project that jumps from research to form, a technical result within instrument error, an over-claimed conclusion, redundant slides, gate and skip handling, pressure to fabricate, and the visual hand-off). Each has observable must / must-not lines and an answer key in [`evals/expected-behavior.md`](evals/expected-behavior.md).
 
 ## Limitations
 
 - Behavioral test cases have been written but not yet run on a live agent in this release. Treat the first runs as part of validation and report failures.
 - Output quality depends on the underlying model following a long instruction set. Weaker models may skip gates or soften findings; the test cases are designed to expose that.
 - The skill reasons about structure and evidence. It cannot verify that a source is real or that a number is correct, and it will say when it could not read something.
-- It does not generate slides, speaker scripts, or visuals.
+- It does not draw, generate slides, or write speaker scripts itself. Visuals go through the optional visual-explainer hand-off, with the limits listed above.
 
 ## Suggested GitHub repository metadata
 

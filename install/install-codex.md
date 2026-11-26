@@ -84,6 +84,26 @@ interface:
 
 Do not add Codex-only fields to `SKILL.md`; the validator rejects them.
 
+## Optional companion: visual-explainer
+
+Only needed for the visual hand-off (see `README.md`, "Pair it with visual-explainer"). The steps below follow visual-explainer's own README (v0.16.0), which lists `~/.codex/skills/visual-explainer` as its Codex path; **they were not run here**.
+
+```bash
+git clone https://github.com/nicobailon/visual-explainer.git
+mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
+cp -R visual-explainer/plugins/visual-explainer "${CODEX_HOME:-$HOME/.codex}/skills/visual-explainer"
+```
+
+**Windows PowerShell**
+
+```powershell
+git clone https://github.com/nicobailon/visual-explainer.git
+$dest = if ($env:CODEX_HOME) { "$env:CODEX_HOME\skills" } else { "$env:USERPROFILE\.codex\skills" }
+Copy-Item -Recurse visual-explainer\plugins\visual-explainer "$dest\visual-explainer"
+```
+
+Invoke it as `$visual-explainer`. Its HTML output needs a browser, and its render step runs with Node. Start a new session afterwards. If it is missing, ppt-logic-architect says so and stops at `visual-brief.md`.
+
 ## Update and uninstall
 
 - Update: `./install/install.sh --target codex --force`. The previous install is moved to `~/.codex/ppt-logic-architect-backups/<timestamp>/`, outside the skills directory, so it cannot load as a duplicate. Or re-copy.
